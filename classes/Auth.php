@@ -17,27 +17,64 @@ class Auth{
 	}
 
     public static function login(){
+
         $data = $_POST;
 	    $user = User::getByLogin($data['login']);
 	    if($user['password']==md5($data['password'])){
+            Auth::sessionClear();
             $_SESSION['login'] = true;
             unset($user['password']);
             $_SESSION['user'] = $user;
+
+	        if($user['status']==User::STATUS_COMPLETE){
+                Auth::redirect('complete.php');
+            }
+
 	        return true;
         }
 	    return false;
     }
-    public static function logout(){
-        unset($_SESSION['login']);
-        unset($_SESSION['user']);
-        header('location: /');
+
+    public static function register(){
+	    Auth::sessionClear();
+        $data = $_POST;
+
+        if( $user = User::getByLogin($data['phone']) ){
+            $_SESSION['error'] = 'Данный телефон уже имеется в системе, укажите другой!';
+            return false;
+        }
+
+        $data['password'] = md5($data['password']);
+        $user = User::create($data);
+        $_SESSION['login'] = true;
+        unset($user['password']);
+        $_SESSION['user'] = $user;
+        return true;
+    }
+
+    public static function logout($route='/'){
+        Auth::sessionClear();
+        header('location: ' . $route);
         exit;
     }
 
     public static function check(){
-        if(isset($_SESSION['login']) && $_SESSION['login']) return true;
+        if(isset($_SESSION['login']) && $_SESSION['login'] && isset($_SESSION['user']) && $_SESSION['user']['status']==User::STATUS_ACTIVE) return true;
 	    return false;
     }
+
+    public static function complete(){
+        if(isset($_SESSION['user']) && $_SESSION['user']['status']==User::STATUS_COMPLETE) return true;
+	    return false;
+    }
+
+    public static function sessionClear(){
+        unset($_SESSION['login']);
+        unset($_SESSION['user']);
+        unset($_SESSION['error']);
+        unset($_SESSION['info']);
+    }
+
     public static function redirect($route){
         header('location: ' . $route);
         exit;

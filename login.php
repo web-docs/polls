@@ -12,20 +12,26 @@
 
 $error = '';
 
-if(Auth::check()){
+if(!Auth::check()){
+    if(Auth::complete()){
+        Auth::redirect('complete.php');
+    }
+}else{
     Auth::redirect('poll.php');
 }
+
 
 if(isset($_POST['login'])){
 	
 	if($user = Auth::login()){
-	
-		Auth::redirect('poll.php');
 
-		exit;
+	    if($user['status']==User::STATUS_COMPLETE){
+            Auth::redirect('complete.php');
+        }
+		Auth::redirect('poll.php');
 	}else{
 		
-		$error = "login or password incorrect" ;
+		$error = "Логин или пароль не верны" ;
 		
 	}
 	
@@ -40,15 +46,17 @@ if($error){ ?>
 <form method="post">
 	
 	<div>
-		<label><input type="text" name="login">Login</label>
+		<label><input type="text" name="login">Телефон</label>
 	</div>
 	<div>
-		<label><input type="password" name="password">Password</label>
+		<label><input type="password" name="password">Пароль</label>
 	</div>
 	 
     <input type="submit" value="Войти">
       
 </form>
+
+<a href="register.php">Регистрация</a>
 
 </body>
 </html>

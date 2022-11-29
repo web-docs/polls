@@ -1,18 +1,18 @@
 <?php 
-
 // Обработка голоса
-
 require ('init.php');
 
 if(!Auth::check()){
+    if(Auth::complete()){
+        Auth::redirect('complete.php');
+    }
     Auth::redirect('login.php');
-
 }
 
 if(isset($_POST['poll'])){
-
     Poll::add($_POST['user_from'],$_POST['user_to']);
-
+    User::setStatus(Auth::id(),User::STATUS_COMPLETE);
+    Auth::redirect('complete.php');
 }
 
 $user_from = Auth::id();
@@ -22,7 +22,7 @@ $user_from = Auth::id();
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Polls</title>
+    <title>Голосование</title>
 
     <style>
         .user{
@@ -66,7 +66,6 @@ $user_from = Auth::id();
 <script src="assets/jquery-2.0.3.min.js"></script>
 <script>
     $(document).ready(function(){
-        //console.log('ready')
         $('.user').click(function(){
             $('.user').removeClass('active');
             $(this).addClass('active');

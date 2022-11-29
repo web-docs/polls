@@ -1,5 +1,4 @@
 <?php
-//use \PDO;
 
 class DB{
 
@@ -24,18 +23,16 @@ class DB{
 		// Подготовка запроса
 		$stmt = self::$db->prepare($sql);
 		
-		// Обход массива с параметрами 
-		// и подставляем значения
+		// Обход массива с параметрами и подставляем значения
 		if ( !empty($params) ) {
 			foreach ($params as $key => $value) {
 				$stmt->bindValue(":$key", $value);
 			}
 		}
-		
-		// Выполняя запрос
+		if(!$stmt){
+		    $_SESSION['error'] = self::$db->errorInfo()[2];
+        }
 		$stmt->execute();
-		
-		// Возвращаем ответ
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
 
