@@ -45,9 +45,7 @@ if($error){ ?>
 	<div>
 		<label><input type="password" name="password">Password</label>
 	</div>
-	 
     <input type="submit" value="Войти">
-      
 </form>
 
 </body>
