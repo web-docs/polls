@@ -53,7 +53,7 @@ $user_from = Auth::id();
         ?>
         <div class="user" data-id="<?=$user['id'] ?>">
             <label>
-                <?=$user['firstname'] .  '' . $user['lastname'] ?>
+                <?=$user['firstname'] .  ' ' . $user['lastname'] ?>
             </label>
         </div>
 
