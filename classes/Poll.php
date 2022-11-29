@@ -7,9 +7,9 @@ class Poll{
 		return $result;
 	}
 
-	public static function stat($id){
-	    $user = DB::select("SELECT * FROM polls WHERE id={$id} LIMIT 1");
-	    return $user[0];
+	public static function stat(){
+	    $result = DB::query("SELECT  p.user_to, COUNT(p.user_from) AS cnt,u.firstname,u.lastname FROM polls p INNER JOIN users u ON u.id=p.user_to GROUP BY p.user_to ORDER BY cnt DESC");
+	    return $result;
     }
 
 
