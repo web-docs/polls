@@ -7,7 +7,6 @@ if(!Auth::check()){
 }
 
 
-
 $result = Poll::stat();
 
 d($result);

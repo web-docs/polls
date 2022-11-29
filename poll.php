@@ -52,7 +52,7 @@ $user_from = Auth::id();
         ?>
         <div class="user" data-id="<?=$user['id'] ?>">
             <label>
-                <input type="radio" name="user_to" value="<?=$user['id']?>"><?=$user['firstname'] .  '' . $user['lastname'] ?>
+                <?=$user['firstname'] .  '' . $user['lastname'] ?>
             </label>
         </div>
 

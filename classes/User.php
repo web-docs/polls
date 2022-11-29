@@ -7,7 +7,7 @@ class User{
     const ROLE_ADMIN = 9;
 
 	public static function getUsers($role=1){
-		$users = DB::query("SELECT * FROM users WHERE role=:role",['role'=>$role]);
+		$users = DB::query("SELECT u.*,d.title FROM users u INNER JOIN departments d ON d.id=u.department_id WHERE u.role=:role",['role'=>$role]);
 		return $users;
 	}
 
