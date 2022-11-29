@@ -31,6 +31,7 @@ $user_from = Auth::id();
             margin:10px 20px;
             border-radius: 5px;
             border: solid 1px #ccc;
+            cursor:pointer;
         }
         .user.active{
             background:#ffcc00;
