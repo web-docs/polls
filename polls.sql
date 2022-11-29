@@ -23,6 +23,9 @@ CREATE TABLE IF NOT EXISTS `departments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы polls.departments: ~0 rows (приблизительно)
+INSERT INTO `departments` (`id`, `title`, `created_at`) VALUES
+	(1, 'IT', '2022-11-29 14:11:20'),
+	(2, 'Accountant', '2022-11-29 14:11:34');
 
 -- Дамп структуры для таблица polls.polls
 CREATE TABLE IF NOT EXISTS `polls` (
@@ -35,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `polls` (
   KEY `user_id` (`user_from`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.polls: ~1 rows (приблизительно)
+-- Дамп данных таблицы polls.polls: ~7 rows (приблизительно)
 INSERT INTO `polls` (`id`, `user_from`, `user_to`, `created_at`) VALUES
 	(1, 1, 4, '2022-11-29 13:50:16'),
 	(2, 2, 1, '2022-11-29 13:50:16'),
@@ -43,7 +46,9 @@ INSERT INTO `polls` (`id`, `user_from`, `user_to`, `created_at`) VALUES
 	(4, 2, 3, '2022-11-29 13:50:16'),
 	(5, 1, 3, '2022-11-29 13:50:16'),
 	(6, 1, 4, '2022-11-29 13:59:43'),
-	(7, 1, 3, '2022-11-29 13:59:44');
+	(7, 1, 3, '2022-11-29 13:59:44'),
+	(8, 1, 4, '2022-11-29 14:12:29'),
+	(9, 1, 4, '2022-11-29 14:13:01');
 
 -- Дамп структуры для таблица polls.users
 CREATE TABLE IF NOT EXISTS `users` (
