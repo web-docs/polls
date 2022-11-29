@@ -26,16 +26,18 @@ CREATE TABLE IF NOT EXISTS `departments` (
 
 -- Дамп структуры для таблица polls.polls
 CREATE TABLE IF NOT EXISTS `polls` (
-  `id` bigint(20) unsigned NOT NULL DEFAULT 0,
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_from` int(10) unsigned DEFAULT NULL,
   `user_to` int(10) unsigned DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_to` (`user_to`),
   KEY `user_id` (`user_from`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.polls: ~0 rows (приблизительно)
+-- Дамп данных таблицы polls.polls: ~1 rows (приблизительно)
+INSERT INTO `polls` (`id`, `user_from`, `user_to`, `created_at`) VALUES
+	(1, 1, 4, '2022-11-29 13:50:16');
 
 -- Дамп структуры для таблица polls.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -50,9 +52,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `department_id` (`department_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.users: ~0 rows (приблизительно)
+-- Дамп данных таблицы polls.users: ~4 rows (приблизительно)
+INSERT INTO `users` (`id`, `role`, `status`, `department_id`, `firstname`, `lastname`, `phone`, `password`, `created_at`) VALUES
+	(1, 9, 1, 1, 'user', 'lastname', '998903002010', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05'),
+	(2, 1, 1, 1, 'user 2', 'lastname', '998903002011', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05'),
+	(3, 1, 1, 1, 'user 3', 'lastname', '998903002012', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05'),
+	(4, 1, 1, 1, 'user 4', 'lastname', '998903002013', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
