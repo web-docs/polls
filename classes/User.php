@@ -45,7 +45,6 @@ class User{
 	    return $user[0];
     }
 	public static function getByLogin($login){
-        d($login,1);
 	    $user = DB::query("SELECT * FROM users WHERE phone='{$login}' LIMIT 1");
 	    return $user[0];
     }

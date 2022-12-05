@@ -19,7 +19,8 @@ class Auth{
     public static function login(){
 
         $data = $_POST;
-	    $user = User::getByLogin($data['login']);
+        $phone = correct_phone($data['login']);
+	    $user = User::getByLogin($phone);
 	    if($user['password']==md5($data['password'])){
             Auth::sessionClear();
             $_SESSION['login'] = true;
