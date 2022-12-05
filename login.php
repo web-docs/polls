@@ -1,17 +1,6 @@
 <?php
 
-require('init.php'); ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Polls - login</title>
-  <link rel="stylesheet" href="assets/css/app.css">
-</head>
-<body>
-
-<?php
+require('init.php');
 
 $error = '';
 
@@ -35,12 +24,20 @@ if (isset($_POST['login'])) {
     }
 }
 
-if ($error) { ?>
-  <div class="alert"><?= $error ?></div>
-    <?php
-}
+
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Polls - login</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+
+
 
 <div class="snowing">
   <div class="small-snow-left">
@@ -132,6 +129,8 @@ if ($error) { ?>
     <div class="medium"></div>
   </div>
 </div>
+
+<?php include ('alert.php') ?>
 
 <div class="login">
   <div class="container">
