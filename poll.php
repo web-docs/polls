@@ -10,7 +10,10 @@ if(!Auth::check()){
 }
 
 if(isset($_POST['poll'])){
-    Poll::add($_POST['user_from'],$_POST['user_to']);
+    $users = explode(',',$_POST['user_to']);
+    foreach($users as $user_to) {
+        Poll::add($_POST['user_from'], $user_to);
+    }
     User::setStatus(Auth::id(),User::STATUS_COMPLETE);
     Auth::redirect('complete.php');
 }
@@ -38,38 +41,74 @@ $user_from = Auth::id();
             color:#fff;
             border: solid 1px #cba500;
         }
+
+
+        #position_1{
+           display: block;
+        }
+        #position_2,
+        #position_3,
+        #position_4
+        {
+           display: none;
+        }
         </style>
 
 </head>
 <body>
 
-<form action="poll.php" method="post">
+<form action="poll.php" method="post" id="send">
     <input type="hidden" name="poll" value="1">
     <input type="hidden" name="user_from" value="<?=Auth::id() ?>">
     <input type="hidden" name="user_to" id="user_to" value="0">
 
-    <?php foreach(User::getUsers(User::ROLE_EMPLOYEE) as $user){
-        if($user_from==$user['id']) continue; // пропустить свой id
-        ?>
+    <?php
+    $old_position = '';
+
+    foreach(User::getUsers(User::ROLE_EMPLOYEE) as $user){
+        if( $user_from==$user['id'] ) continue; // пропустить свой id
+        if( $user['position'] != $old_position) {
+            if($old_position!='') echo '</div>';
+            $old_position = $user['position'];
+            ?>
+            <div id="position_<?=$user['position'] ?>" data-id="<?=$user['position'] ?>">
+        <?php } ?>
         <div class="user" data-id="<?=$user['id'] ?>">
             <label>
                 <?=$user['firstname'] .  ' ' . $user['lastname'] ?>
             </label>
         </div>
-
     <?php } ?>
+    </div>
 
-    <input type="submit" value="Отправить">
+    <div id="position_4" data-id="4">
+        <h2>Спасибо ваш голос принят!</h2>
+    </div>
+
+
+
+    <?php //<input type="submit" value="Отправить"> ?>
 
 </form>
 
 <script src="assets/jquery-2.0.3.min.js"></script>
 <script>
     $(document).ready(function(){
+        var users = [] ;
         $('.user').click(function(){
-            $('.user').removeClass('active');
-            $(this).addClass('active');
-            $('#user_to').val($(this).data('id'));
+            index = $(this).parent().data('id');
+            $('#position_'+index).css('display','none');
+            index++;
+            $('#position_'+index).css('display','block');
+
+            users.push($(this).data('id'))
+            $('#user_to').val(users);
+            console.log(users)
+
+            alert($('#user_to').val())
+            if(index==4){
+                $('form#send').submit();
+            }
         });
     })
 </script>

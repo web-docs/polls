@@ -35,7 +35,8 @@ class User{
     }
     
 	public static function getUsers($role=1){
-		$users = DB::query("SELECT u.*,d.title FROM users u INNER JOIN departments d ON d.id=u.department_id WHERE u.role=:role AND u.status=1 ORDER BY u.department_id,u.lastname,u.firstname",['role'=>$role]);
+		// $users = DB::query("SELECT u.*,d.title FROM users u INNER JOIN departments d ON d.id=u.department_id WHERE u.role=:role AND u.status=1 ORDER BY u.department_id,u.lastname,u.firstname",['role'=>$role]);
+		$users = DB::query("SELECT * FROM users WHERE role=:role AND status=1 ORDER BY position,lastname,firstname",['role'=>$role]);
 		return $users;
 	}
 

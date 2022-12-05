@@ -1,6 +1,32 @@
 <?php
 
-require('init.php'); ?>
+require('init.php');
+
+$error = '';
+
+if (!Auth::check()) {
+    if (Auth::complete()) {
+        Auth::redirect('complete.php');
+    }
+} else {
+    Auth::redirect('poll.php');
+}
+
+
+if (isset($_POST['login'])) {
+    if ($user = Auth::login()) {
+        if ($user['status'] == User::STATUS_COMPLETE) {
+            Auth::redirect('complete.php');
+        }
+        Auth::redirect('poll.php');
+    } else {
+        $error = "Логин или пароль не верны";
+    }
+}
+
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -601,36 +627,7 @@ require('init.php'); ?>
 </style>
 <body>
 
-<?php
 
-$error = '';
-
-if (!Auth::check()) {
-    if (Auth::complete()) {
-        Auth::redirect('complete.php');
-    }
-} else {
-    Auth::redirect('poll.php');
-}
-
-
-if (isset($_POST['login'])) {
-    if ($user = Auth::login()) {
-        if ($user['status'] == User::STATUS_COMPLETE) {
-            Auth::redirect('complete.php');
-        }
-        Auth::redirect('poll.php');
-    } else {
-        $error = "Логин или пароль не верны";
-    }
-}
-
-if ($error) { ?>
-  <div class="alert"><?= $error ?></div>
-    <?php
-}
-
-?>
 
 <div class="snowing">
   <div class="small-snow-left">
@@ -722,6 +719,8 @@ if ($error) { ?>
     <div class="medium"></div>
   </div>
 </div>
+
+<?php include ('alert.php') ?>
 
 <div class="login">
   <div class="container">
