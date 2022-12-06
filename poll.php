@@ -127,7 +127,7 @@ $user_from = Auth::id();
       <img src="assets/img/juniper-claus.png" alt="">
     </div>
   </div>
-
+<!--test-->
   <div class="container juniper-container">
     <div class="poll-lists">
       <form action="poll.php" method="post" id="send">
