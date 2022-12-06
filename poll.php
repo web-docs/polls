@@ -145,13 +145,13 @@ $user_from = Auth::id();
             if ($user_from == $user['id']) {
                 continue;
             } // пропустить свой id
-            if ($user['position'] != $old_position) {
+            if ($user['position_id'] != $old_position) {
             if ($old_position != '') {
                 echo '</div>';
             }
-            $old_position = $user['position'];
+            $old_position = $user['position_id'];
             ?>
-            <div id="position_<?= $user['position'] ?>" data-id="<?= $user['position'] ?>">
+            <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>">
                 <?php
                 } ?>
                 <div class="user" data-id="<?= $user['id'] ?>">
@@ -159,7 +159,7 @@ $user_from = Auth::id();
                         <img src="assets/img/juniper-claus.png" alt="">
                     </div>
                     <label>
-                        <?= $user['firstname'].' '.$user['lastname'] ?>
+                        <?= $user['fio_passport'] ?>
                     </label>
                     <a href="#">Голосовать</a>
                 </div>
