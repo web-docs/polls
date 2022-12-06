@@ -26,10 +26,100 @@ $user_from = Auth::id();
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Голосование</title>
+  <title>Bucheon University in Tashkent | Лучшый начальник года</title>
   <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body>
+<div class="snowing">
+  <div class="small-snow-left">
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+  </div>
+  <div class="small-snow-right">
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+    <div class="small"></div>
+  </div>
+  <div class="medium-snow-left">
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+  </div>
+  <div class="medium-snow-right">
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+    <div class="medium"></div>
+  </div>
+</div>
   <div class="juniper">
     <h1>Номинация</h1>
     <div class="juniper-img">
@@ -61,9 +151,13 @@ $user_from = Auth::id();
             <?php
             } ?>
           <div class="user" data-id="<?= $user['id'] ?>">
+            <div class="user-img">
+              <img src="assets/img/juniper-claus.png" alt="">
+            </div>
             <label>
                 <?= $user['firstname'].' '.$user['lastname'] ?>
             </label>
+            <a href="#">Голосовать</a>
           </div>
             <?php
             } ?>
