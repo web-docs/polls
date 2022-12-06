@@ -67,15 +67,15 @@ $user_from = Auth::id();
 
     foreach(User::getUsers(User::ROLE_EMPLOYEE) as $user){
         if( $user_from==$user['id'] ) continue; // пропустить свой id
-        if( $user['position'] != $old_position) {
+        if( $user['position_id'] != $old_position) {
             if($old_position!='') echo '</div>';
-            $old_position = $user['position'];
+            $old_position = $user['position_id'];
             ?>
-            <div id="position_<?=$user['position'] ?>" data-id="<?=$user['position'] ?>">
+            <div id="position_<?=$user['position_id'] ?>" data-id="<?=$user['position_id'] ?>">
         <?php } ?>
         <div class="user" data-id="<?=$user['id'] ?>">
             <label>
-                <?=$user['firstname'] .  ' ' . $user['lastname'] ?>
+                <?=$user['fio_passport'] ?>
             </label>
         </div>
     <?php } ?>
@@ -103,9 +103,9 @@ $user_from = Auth::id();
 
             users.push($(this).data('id'))
             $('#user_to').val(users);
-            console.log(users)
+            //console.log(users)
 
-            alert($('#user_to').val())
+            //alert($('#user_to').val())
             if(index==4){
                 $('form#send').submit();
             }
