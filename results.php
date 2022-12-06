@@ -1,6 +1,7 @@
 <?php
 
 require ('init.php');
+
 /*
 if(!Auth::check()){
     Auth::redirect('login.php');
@@ -11,7 +12,9 @@ if(isset($_GET['all'])){
 }else{
     $limit = 3;
 } */
-$limit = 1000;
+
+$limit = 10000;
+
 $users = Poll::stat($limit);
 $cnt = 0;
 foreach($users as $user) {
@@ -24,7 +27,7 @@ foreach($users as $user) {
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Bucheon University in Tashkent | Complete</title>
+        <title>Bucheon University in Tashkent | Результаты голосования</title>
         <link rel="stylesheet" href="assets/css/app.css">
     </head>
     <body>
@@ -139,22 +142,12 @@ foreach($users as $user) {
                 <th>ФИО</th>
                 <th>Должность</th>
                 <th>Голосов</th>
-                <th>type</th>
+                <th>PID</th>
             </tr>
 
             <?php
             $n=1;
-            $u=1;
-            $u = [1=>0,2=>0,3=>0];
-            $old_position = '';
-            foreach($users as $user){
-                if( $user['position_id'] != $old_position ) {
-                    $old_position = $user['position_id'];
-                }
-                $u[$user['position_id']]++;
-                if($u[$user['position_id']]>2) continue;
-
-                ?>
+            foreach($users as $user){ ?>
                 <tr>
                     <td><?=$n ?></td>
                     <td><img src="/assets/img/<?=$user['id'] ?>.jpg" width="48px" /><img src="/assets/img/juniper-claus.png" height="32px" /> </td>
@@ -166,7 +159,6 @@ foreach($users as $user) {
                 </tr>
                 <?php
                 $n++;
-
             } ?>
 
         </table>
