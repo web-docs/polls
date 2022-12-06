@@ -1,4 +1,25 @@
-<?php require ('init.php'); ?>
+<?php
+
+require ('init.php');
+
+$error = '';
+if(Auth::check()){
+    Auth::redirect('poll.php');
+}
+
+if(isset($_POST['register'])){
+
+    if($user = Auth::register()){
+        Auth::redirect('poll.php');
+        exit;
+    }else{
+        $error = $_SESSION['error'] ;
+    }
+
+
+
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -118,22 +139,7 @@
 
 <?php 
 
-$error = '';
 
-if(Auth::check()){
-    Auth::redirect('poll.php');
-}
-
-if(isset($_POST['register'])){
-	
-	if($user = Auth::register()){
-		Auth::redirect('poll.php');
-		exit;
-	}else{
-		$error = $_SESSION['error'] ;
-	}
-	
-}
 
 if($error){ ?>	
 	<div class="alert"><?=$error ?></div>	
@@ -144,7 +150,10 @@ if($error){ ?>
 <form method="post">
 	<input type="hidden" name="register" value="1">
 	<div>
-		<label><input type="text" name="firstname" required>ФИО</label>
+		<label><input type="text" name="fio_passport" required>ФИО (по паспорту)</label>
+	</div>
+    <div>
+		<label><input type="text" name="fio" required>ФИО (кирилица)</label>
 	</div>
 	<div>
 		<label><input type="text" name="department" required>Отдел</label>
@@ -153,6 +162,7 @@ if($error){ ?>
 		<label><input type="text" name="position" required>Должность</label>
 	</div>
     <div>
+        <label>Категория</label>
         <select name="position_id" required>
             <option value="1">Начальник</option>
             <option value="2">Сотрудник</option>
@@ -160,7 +170,7 @@ if($error){ ?>
         </select>
     </div>
 	<div>
-		<label><input type="text" name="phone" required>Телефон</label>
+		<label><input type="text" name="phone" required>Телефон (без кода 998)</label>
 	</div>
 
     <div>

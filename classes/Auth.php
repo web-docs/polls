@@ -30,7 +30,6 @@ class Auth{
 	        if($user['status']==User::STATUS_COMPLETE){
                 Auth::redirect('complete.php');
             }
-
 	        return true;
         }
 	    return false;
@@ -60,7 +59,7 @@ class Auth{
     }
 
     public static function check(){
-        if(isset($_SESSION['login']) && $_SESSION['login'] && (isset($_SESSION['user']) && $_SESSION['user']['status']==User::STATUS_ACTIVE && $_SESSION['user']['role'] == User::ROLE_ADMIN )) return true;
+        if((isset($_SESSION['login']) && $_SESSION['login'] && (isset($_SESSION['user']) && $_SESSION['user']['status']==User::STATUS_ACTIVE) || $_SESSION['user']['role'] == User::ROLE_ADMIN )) return true;
 	    return false;
     }
 

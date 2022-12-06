@@ -4,6 +4,7 @@ require('init.php');
 
 $error = '';
 
+
 if (!Auth::check()) {
     if (Auth::complete()) {
         Auth::redirect('complete.php');
@@ -20,10 +21,9 @@ if (isset($_POST['login'])) {
         }
         Auth::redirect('poll.php');
     } else {
-        $error = "Логин или пароль не верны";
+        $error = "Логин или пароль не верны";d($_POST,1);
     }
 }
-
 
 
 ?>

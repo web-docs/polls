@@ -4,6 +4,7 @@
 require('init.php');
 
 if (!Auth::check()) {
+
     if (Auth::complete()) {
         Auth::redirect('complete.php');
     }
@@ -168,7 +169,6 @@ $user_from = Auth::id();
             </div>
 
             <div id="position_4" data-id="4">
-                <h2>Спасибо ваш голос принят!</h2>
             </div>
 
 

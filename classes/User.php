@@ -11,12 +11,14 @@ class User{
     const STATUS_COMPLETE = 2;
 
     public static function create($data){
-        DB::query("INSERT INTO users SET role=1, status=1, firstname=:firstname, lastname=:lastname, phone=:phone, password=:password,department_id=:department_id, created_at=NOW()",[
-            'firstname'=>$data['firstname'],
-            'lastname'=>$data['lastname'],
+        DB::query("INSERT INTO users SET role=1, status=1, fio_passport=:fio_passport, fio=:fio, phone=:phone,department=:department, password=:password,position_id=:position_id,position=:position, created_at=NOW()",[
+            'fio_passport'=>$data['fio_passport'],
+            'fio'=>$data['fio'],
             'phone'=>correct_phone($data['phone']),
             'password'=>$data['password'],
-            'department_id'=>$data['department_id']
+            'department'=>$data['department'],
+            'position'=>$data['position'],
+            'position_id'=>$data['position_id'],
         ]);
         $user = false;
         if(!isset($_SESSION['error'])){
