@@ -1,10 +1,10 @@
 <?php
 
 require ('init.php');
-/*
+
 if(!Auth::check()){
     Auth::redirect('login.php');
-} */
+}
 
 if(isset($_GET['all'])){
     $limit = 1000;

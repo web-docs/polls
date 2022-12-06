@@ -23,9 +23,19 @@ CREATE TABLE IF NOT EXISTS `polls` (
   PRIMARY KEY (`id`),
   KEY `user_to` (`user_to`),
   KEY `user_id` (`user_from`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.polls: ~3 rows (приблизительно)
+-- Дамп данных таблицы polls.polls: ~6 rows (приблизительно)
+INSERT INTO `polls` (`id`, `user_from`, `user_to`, `created_at`) VALUES
+	(43, 2, 34, '2022-12-06 09:34:12'),
+	(44, 2, 51, '2022-12-06 09:34:12'),
+	(45, 2, 111, '2022-12-06 09:34:12'),
+	(46, 2, 26, '2022-12-06 09:39:57'),
+	(47, 2, 53, '2022-12-06 09:39:57'),
+	(48, 2, 111, '2022-12-06 09:39:57'),
+	(49, 2, 21, '2022-12-06 16:25:07'),
+	(50, 2, 71, '2022-12-06 16:25:07'),
+	(51, 2, 163, '2022-12-06 16:25:07');
 
 -- Дамп структуры для таблица polls.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -45,10 +55,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `phone` (`phone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.users: ~226 rows (приблизительно)
+-- Дамп данных таблицы polls.users: ~225 rows (приблизительно)
 INSERT INTO `users` (`id`, `role`, `status`, `department`, `position`, `position_id`, `fio_passport`, `fio`, `phone`, `password`, `created_at`, `updated_at`) VALUES
 	(1, 9, 1, 'admin', 'admin', 9, 'user', 'lastname', '903002010', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05', '2022-12-05 15:42:04'),
-	(2, 1, 2, 'test', 'admin', 9, 'user', 'lastname', '903002011', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05', '2022-12-06 09:04:26'),
+	(2, 1, 2, 'test', 'admin', 9, 'user', 'lastname', '903002011', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05', '2022-12-06 16:25:07'),
 	(19, 1, 1, 'Академический отдел', 'Начальник академического отдела', 1, 'ABDUQODIROVA ODINA ABDUSAID QIZI', 'АБДУҚОДИРОВА ОДИНА АБДУСАИД ҚИЗИ ', '977226642', NULL, NULL, NULL),
 	(20, 1, 1, 'Типография / Библиотека', 'Заведующий библиотекой ', 1, 'AXMETSHIN MARAT RENATOVICH', 'АХМЕТШИН МАРАТ РЕНАТОВИЧ ', '935816051', NULL, NULL, NULL),
 	(21, 1, 1, 'Международный отдел', 'Начальник международного отдела', 1, 'KIM OKSANA SAVELYEVNA', 'КИМ ОКСАНА САВЕЛЬЕВНА', '991840424', NULL, NULL, NULL),

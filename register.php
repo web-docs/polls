@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Polls - register</title>
+    <meta charset="UTF-8">
+    <title>Bucheon University in Tashkent | Регистрация</title>
+    <link rel="stylesheet" href="assets/css/app.css">
     <style>
         .alert{
             background: #8b1111;
@@ -17,6 +18,103 @@
     </style>
 </head>
 <body>
+<div class="snowing">
+    <div class="small-snow-left">
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+    </div>
+    <div class="small-snow-right">
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+        <div class="small"></div>
+    </div>
+    <div class="medium-snow-left">
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+    </div>
+    <div class="medium-snow-right">
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+        <div class="medium"></div>
+    </div>
+</div>
+<div class="juniper">
+    <h1>Регистрация</h1>
+    <div class="juniper-img">
+        <img src="assets/img/juniper-claus.png" alt="">
+    </div>
+</div>
+
 
 <?php 
 
@@ -46,25 +144,27 @@ if($error){ ?>
 <form method="post">
 	<input type="hidden" name="register" value="1">
 	<div>
-		<label><input type="text" name="firstname">Имя</label>
+		<label><input type="text" name="firstname" required>ФИО</label>
 	</div>
 	<div>
-		<label><input type="text" name="lastname">Фамилия</label>
+		<label><input type="text" name="department" required>Отдел</label>
 	</div>
 	<div>
-		<label><input type="text" name="phone">Телефон</label>
+		<label><input type="text" name="position" required>Должность</label>
 	</div>
     <div>
-        <label>Отдел (укажите свой отдел)</label>
-        <select name="department_id">
-            <?php foreach (Department::getList() as $department){ ?>
-                <option value="<?=$department['id'] ?>"><?=$department['title'] ?></option>
-            <?php } ?>
+        <select name="position_id" required>
+            <option value="1">Начальник</option>
+            <option value="2">Сотрудник</option>
+            <option value="3">Хозчасть</option>
         </select>
     </div>
+	<div>
+		<label><input type="text" name="phone" required>Телефон</label>
+	</div>
 
     <div>
-		<label><input type="password" name="password">Пароль</label>
+		<label><input type="text" name="password" required>Пароль</label>
 	</div>
 	 
     <input type="submit" value="Зарегистрировать">
