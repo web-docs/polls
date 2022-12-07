@@ -31,112 +31,115 @@ $user_from = Auth::id();
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 <body>
-<div class="snowing">
-    <div class="small-snow-left">
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-    </div>
-    <div class="small-snow-right">
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-    </div>
-    <div class="medium-snow-left">
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-    </div>
-    <div class="medium-snow-right">
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-    </div>
-</div>
-<div class="juniper">
-    <h1>Номинация</h1>
-    <div class="juniper-img">
-        <img src="assets/img/juniper-claus.png" alt="">
-    </div>
-</div>
-<!--test-->
 
-<form action="poll.php" method="post" id="send">
-    <input type="hidden" name="poll" value="1">
-    <input type="hidden" name="user_from" value="<?= Auth::id() ?>">
-    <input type="hidden" name="user_to" id="user_to" value="0">
-</form>
 
-<div class="container juniper-container">
-    <div class="poll-lists">
+<div class="poll-wrapper">
+    <div class="snowing">
+        <div class="small-snow-left">
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+        </div>
+        <div class="small-snow-right">
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+            <div class="small"></div>
+        </div>
+        <div class="medium-snow-left">
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+        </div>
+        <div class="medium-snow-right">
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+            <div class="medium"></div>
+        </div>
+    </div>
+    <div class="juniper">
+        <h1>Номинация</h1>
+        <div class="juniper-img">
+            <img src="assets/img/juniper-claus.png" alt="">
+        </div>
+    </div>
+    <!--test-->
+
+    <form action="poll.php" method="post" id="send">
+        <input type="hidden" name="poll" value="1">
+        <input type="hidden" name="user_from" value="<?= Auth::id() ?>">
+        <input type="hidden" name="user_to" id="user_to" value="0">
+    </form>
+
+    <div class="container juniper-container">
+        <div class="poll-lists">
 
             <?php
             $old_position = '';
@@ -146,14 +149,14 @@ $user_from = Auth::id();
                 continue;
             } // пропустить свой id
             if ($user['position_id'] != $old_position) {
-                if ($old_position != '') {
-                    echo '</div>';
-                }
-                $old_position = $user['position_id'];
-                ?>
-                <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>">
-            <?php
-            } ?>
+            if ($old_position != '') {
+                echo '</div>';
+            }
+            $old_position = $user['position_id'];
+            ?>
+            <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>">
+                <?php
+                } ?>
                 <div class="user" data-id="<?= $user['id'] ?>">
                     <div class="user-img">
                         <img src="assets/img/juniper-claus.png" alt="">
@@ -171,6 +174,7 @@ $user_from = Auth::id();
             </div>
 
 
+        </div>
     </div>
 </div>
 
@@ -183,7 +187,7 @@ $user_from = Auth::id();
             index = $(this).parent().data('id');
             $('#position_' + index).css('display', 'none');
             index++;
-            $('#position_' + index).css('display', 'block');
+            $('#position_' + index).css(['display', 'flex', 'justify-content', 'space-between']);
 
             users.push($(this).data('id'))
             $('#user_to').val(users);
