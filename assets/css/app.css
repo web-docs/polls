@@ -20,8 +20,9 @@ body {
 }
 
 .login-wrapper,
-.poll-wrapper {
-    min-height: 100vh;
+.poll-wrapper,
+.stat-wrapper {
+    min-height: 80vh;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -141,7 +142,7 @@ body {
 .snowing {
     position: absolute;
     filter: blur(1px);
-    z-index: 0;
+    /*z-index: 0;*/
     width: 100%;
     height: 100%;
 }
@@ -789,6 +790,7 @@ body {
     text-align: center;
 }
 
+
 .juniper h1 {
     font-family: 'Cormorant Infant', sans-serif;
     font-style: normal;
@@ -806,6 +808,22 @@ body {
     justify-content: center;
     position: absolute;
     top: 260px;
+}
+
+.winner-img {
+    width: 100%;
+    height: 670px;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    position: absolute;
+    top: 100px;
+}
+
+.winner-img img {
+    width: 100%;
+    height: 100%;
+    /*object-fit: fill;*/
+    /*object-position: center;*/
 }
 
 .juniper-img img {
@@ -910,20 +928,82 @@ body {
 }
 
 .user a:hover {
-  color: #fff;
-  background: linear-gradient(87.84deg, #72191c 50.08%, #e04252 97.48%);
-  opacity: 0.8;
+    color: #fff;
+    background: linear-gradient(87.84deg, #72191c 50.08%, #e04252 97.48%);
+    opacity: 0.8;
 }
 
 #list_position_1,
 #list_position_2,
-#list_position_3{
-  background: #fff;
-  margin:5px;
-  padding: 5px;
+#list_position_3 {
+    background: #fff;
+    margin: 5px;
+    padding: 5px;
 }
+
 .squirell {
     position: absolute;
     left: 0;
     bottom: 0;
+}
+
+.winner {
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+
+.winner-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.winner-user {
+    min-width: 365px;
+    width: 30%;
+    min-height: 560px;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.winner-user__img {
+    width: 80%;
+    height: 382px;
+    background: #9E9E9E;
+    border-radius: 20px;
+    margin: 0 40px;
+}
+
+.winner-user__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+.winner-user h3 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin: 20px 0;
+}
+.winner-user span {
+    width: 100%;
+    background: linear-gradient(87.2deg, #600C0A 2.48%, #BF0F11 43.23%, #D03E3E 72.94%, #D95455 98.46%, #E8ACAC 114.48%, #EBBFBF 119.28%, #D68483 123.32%, #BE3F3E 128.75%, #620C0B 140.53%), #D9D9D9;
+    border-radius: 10px;
+    padding: 20px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
 }
