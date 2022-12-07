@@ -4,7 +4,6 @@ require('init.php');
 
 $error = '';
 
-
 if (!Auth::check()) {
     if (Auth::complete()) {
         Auth::redirect('complete.php');
