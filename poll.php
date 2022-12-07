@@ -188,7 +188,7 @@ $user_from = Auth::id();
             index = $(this).parent().data('id');
             $('#position_' + index).css('display', 'none');
             index++;
-            $('#position_' + index).css(['display', 'flex', 'justify-content', 'space-between']);
+            $('#position_' + index).css({'display':'flex','justify-content':'space-between'});
 
             users.push($(this).data('id'))
             $('#user_to').val(users);
