@@ -5,14 +5,8 @@ require ('init.php');
 if(!Auth::check()){
     Auth::redirect('login.php');
 } */
-/*
-if(isset($_GET['all'])){
-    $limit = 1000;
-}else{
-    $limit = 3;
-} */
-$limit = 1000;
-$users = Poll::stat($limit);
+
+$users = Poll::stat();
 $cnt = 0;
 foreach($users as $user) {
     $cnt += $user['cnt'];
@@ -138,7 +132,6 @@ foreach($users as $user) {
 
             <?php
             $n=1;
-            $u=1;
             $u = [1=>0,2=>0,3=>0];
             $old_position = '';
             foreach($users as $user){

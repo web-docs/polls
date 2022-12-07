@@ -1,12 +1,12 @@
 <?php
 require('init.php');
 
-if (!Auth::check()) {
+/*if (!Auth::check()) {
     Auth::redirect('login.php');
-}
+}*/
 
-$limit = 1000;
-$users = Poll::stat($limit);
+
+$users = Poll::stat();
 $cnt = 0;
 foreach($users as $user) {
     $cnt += $user['cnt'];
@@ -118,7 +118,43 @@ foreach($users as $user) {
     </div>
 </div>
 
+<style>
+    #list_position_1,
+    #list_position_2,
+    #list_position_3{
+        background: #fff;
+        margin:5px;
+        padding: 5px;
+    }
 
-<?php // <a href="/?logout">Выйти</a> ?>
+    </style>
+
+<?php // <a href="/?logout">Выйти</a>
+            $limit = 10;
+            $n=1;
+            $u = [1=>0,2=>0,3=>0];
+            $old_position = '';
+            foreach($users as $user){
+                if( $user['position_id'] != $old_position ) {
+                    $old_position = $user['position_id'];
+                    if($old_position!='') echo '</div>';
+                    echo '<div id="list_position_'.$user['position_id'].'" class="user-list">';
+                    $n=1;
+                }
+                $u[$user['position_id']]++;
+                if($u[$user['position_id']]>$limit) continue;
+
+                ?>
+                <div class="user-item">
+                    <div><?=$n . '. ' . $user['fio_passport'] . ' ' . $user['cnt'] ?></div>
+                    <?php /*<img src="/assets/img/<?=$user['id'] ?>.jpg" width="48px" /><img src="/assets/img/juniper-claus.png" height="32px" /> */ ?>
+
+                </div>
+            <?php
+            $n++;
+
+            } ?>
+            </div>
+
 </body>
 </html>

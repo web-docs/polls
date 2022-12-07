@@ -13,9 +13,7 @@ if(isset($_GET['all'])){
     $limit = 3;
 } */
 
-$limit = 10000;
-
-$users = Poll::stat($limit);
+$users = Poll::stat();
 $cnt = 0;
 foreach($users as $user) {
     $cnt += $user['cnt'];
