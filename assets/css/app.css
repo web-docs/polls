@@ -906,7 +906,21 @@ body {
 }
 
 .user a:hover {
+<<<<<<< HEAD
     color: #fff;
     background: linear-gradient(87.84deg, #72191c 50.08%, #e04252 97.48%);
     opacity: 0.8;
+=======
+  color: #fff;
+  background: linear-gradient(87.84deg, #72191c 50.08%, #e04252 97.48%);
+  opacity: 0.8;
+}
+
+#list_position_1,
+#list_position_2,
+#list_position_3{
+  background: #fff;
+  margin:5px;
+  padding: 5px;
+>>>>>>> c8b09cac88be1ab2a6959a12e3b19012b6b40e16
 }
