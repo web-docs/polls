@@ -172,7 +172,7 @@ $n++;
                     </div>
                     <h3 data-id="<?=$winner[3]['id']?>"><?=isset($winner[3]) ? $winner[3]['fio_passport'] : 'Не определен'?></h3>
                     <span>
-                    Хоз года
+                    Тех персона года
                 </span>
                 </div>
             </div>
