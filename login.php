@@ -13,7 +13,6 @@ if (!Auth::check()) {
     Auth::redirect('poll.php');
 }
 
-
 if (isset($_POST['login'])) {
     if ($user = Auth::login()) {
         if ($user['status'] == User::STATUS_COMPLETE) {
