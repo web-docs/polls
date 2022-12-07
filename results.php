@@ -134,8 +134,6 @@ foreach($users as $user) {
 
 <div>
 
-
-
     <?php // <a href="/?logout">Выйти</a>
     $limit = 1000;
     $n=1;
