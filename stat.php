@@ -20,16 +20,7 @@ foreach($users as $user) {
         <meta charset="UTF-8">
         <title>Bucheon University in Tashkent | Results</title>
         <link rel="stylesheet" href="assets/css/app.css">
-        <style>
-            #list_position_1,
-            #list_position_2,
-            #list_position_3{
-                background: #fff;
-                margin:5px;
-                padding: 5px;
-            }
 
-        </style>
     </head>
     <body>
     <div class="snowing">

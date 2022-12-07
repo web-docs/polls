@@ -793,3 +793,11 @@ body {
   background: linear-gradient(87.84deg, #72191c 50.08%, #e04252 97.48%);
   opacity: 0.8;
 }
+
+#list_position_1,
+#list_position_2,
+#list_position_3{
+  background: #fff;
+  margin:5px;
+  padding: 5px;
+}
