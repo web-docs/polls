@@ -138,7 +138,6 @@ $user_from = Auth::id();
 <div class="container juniper-container">
     <div class="poll-lists">
 
-
             <?php
             $old_position = '';
 
@@ -147,14 +146,14 @@ $user_from = Auth::id();
                 continue;
             } // пропустить свой id
             if ($user['position_id'] != $old_position) {
-            if ($old_position != '') {
-                echo '</div>';
-            }
-            $old_position = $user['position_id'];
-            ?>
-            <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>">
-                <?php
-                } ?>
+                if ($old_position != '') {
+                    echo '</div>';
+                }
+                $old_position = $user['position_id'];
+                ?>
+                <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>">
+            <?php
+            } ?>
                 <div class="user" data-id="<?= $user['id'] ?>">
                     <div class="user-img">
                         <img src="assets/img/juniper-claus.png" alt="">

@@ -1,3 +1,18 @@
+<?php
+require('init.php');
+
+if (!Auth::check()) {
+    Auth::redirect('login.php');
+}
+
+$limit = 1000;
+$users = Poll::stat($limit);
+$cnt = 0;
+foreach($users as $user) {
+    $cnt += $user['cnt'];
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

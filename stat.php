@@ -132,6 +132,38 @@ foreach($users as $user) {
         <h1>Всего голосов: <?=$cnt ?></h1>
     </div>
     <div style="clear: both">
+
+
+
+
+            <?php
+            $n=1;
+            $u=1;
+            $u = [1=>0,2=>0,3=>0];
+            $old_position = '';
+            foreach($users as $user){
+                if( $user['position_id'] != $old_position ) {
+                    $old_position = $user['position_id'];
+                    if($old_position!='') echo '</div>';
+                    echo '<div id="position_'.$user['position_id'].'" class="user-list">';
+                }
+                $u[$user['position_id']]++;
+                if($u[$user['position_id']]>2) continue;
+
+                ?>
+                <div class="user-item">
+                    <div><?=$n . ' ' . $user['fio_passport'] . ' ' . $user['cnt'] . ' ' . $user['position_id'] ?></div>
+                    <td><img src="/assets/img/<?=$user['id'] ?>.jpg" width="48px" /><img src="/assets/img/juniper-claus.png" height="32px" /> </td>
+
+                </div>
+                <?php
+                $n++;
+
+            } ?>
+
+        </div>
+
+
         <table class="table">
             <tr>
                 <th>#</th>
