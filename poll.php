@@ -130,8 +130,6 @@ $user_from = Auth::id();
             <img src="assets/img/juniper-claus.png" alt="">
         </div>
     </div>
-    <!--test-->
-
     <form action="poll.php" method="post" id="send">
         <input type="hidden" name="poll" value="1">
         <input type="hidden" name="user_from" value="<?= Auth::id() ?>">
@@ -175,6 +173,9 @@ $user_from = Auth::id();
 
 
         </div>
+    </div>
+    <div class="squirell">
+        <img src="assets/img/squirell.png" alt="squirell">
     </div>
 </div>
 
