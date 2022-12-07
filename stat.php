@@ -41,7 +41,12 @@ $n++;
 </head>
 <body>
 
+
     <div class="stat-wrapper">
+        <iframe src="https://gifer.com/embed/6ob" width=480 height=480.000 frameBorder="0" allowFullScreen></iframe><p><a href="https://gifer.com">через GIFER</a></p>
+<!--        <div class="happy">-->
+<!--            <img src="assets/img/happy.gif" alt="">-->
+<!--        </div>-->
         <div class="snowing">
             <div class="small-snow-left">
                 <div class="small"></div>
