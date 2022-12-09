@@ -96,9 +96,59 @@ include('snow.php') ?>
 
     </div>
   </div>
-  <div class="squirell">
-    <img src="assets/img/squirell.png" alt="squirell">
-  </div>
+    <form action="poll.php" method="post" id="send">
+        <input type="hidden" name="poll" value="1">
+        <input type="hidden" name="user_from" value="<?= Auth::id() ?>">
+        <input type="hidden" name="user_to" id="user_to" value="0">
+    </form>
+
+    <div class="container juniper-container">
+        <div class="poll-lists">
+
+            <?php
+            $old_position = '';
+
+            $title = [
+                1=>'Начальник года',
+                2=>'Сотрудник года',
+                3=>'Тех персона года',
+            ];
+
+            foreach (User::getUsers(User::ROLE_EMPLOYEE) as $user){
+            if ($user_from == $user['id']) {
+                continue;
+            } // пропустить свой id
+            if ($user['position_id'] != $old_position) {
+            if ($old_position != '') {
+                echo '</div>';
+            }
+            $old_position = $user['position_id'];
+            ?>
+            <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>" data-title="<?=$title[$user['position_id']]?>">
+                <?php
+                } ?>
+                <div class="user" data-id="<?= $user['id'] ?>">
+                    <div class="user-img">
+                        <img src="assets/photo/<?=$user['phone']?>.jpg" alt="">
+                    </div>
+                    <label>
+                        <?= $user['fio_passport'] ?>
+                    </label>
+                    <a href="#">Голосовать</a>
+                </div>
+                <?php
+                } ?>
+            </div>
+
+            <div id="position_4" data-id="4">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="squirell">
+        <img src="assets/img/squirell.png" alt="squirell">
+    </div>
 </div>
 
 
