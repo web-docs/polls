@@ -48,7 +48,7 @@ include('header.php') ?>
             $title = [
                 1=>'Начальник года',
                 2=>'Сотрудник года',
-                3=>'Тех персона года',
+                3=>'Тех персонал года',
             ];
 
             foreach (User::getUsers(User::ROLE_EMPLOYEE) as $user){
