@@ -110,6 +110,5 @@ $percent = 100/$cnt;
         </div>
       </div>
     </div>
-
     </body>
 </html>
