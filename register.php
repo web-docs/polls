@@ -166,7 +166,7 @@ if($error){ ?>
         <select name="position_id" required>
             <option value="1">Начальник</option>
             <option value="2">Сотрудник</option>
-            <option value="3">Хозчасть</option>
+            <option value="3">Тех персонал</option>
         </select>
     </div>
 	<div>
