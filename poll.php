@@ -164,7 +164,7 @@ $user_from = Auth::id();
                 } ?>
                 <div class="user" data-id="<?= $user['id'] ?>">
                     <div class="user-img">
-                        <img src="assets/img/juniper-claus.png?<?=$user['phone']?>.jpg" alt="">
+                        <img src="assets/photo/<?=$user['phone']?>.jpg" alt="">
                     </div>
                     <label>
                         <?= $user['fio_passport'] ?>

@@ -64,7 +64,7 @@ foreach ($users as $user) {
     <div class="winner-wrapper">
       <div class="winner-user">
         <div class="winner-user__img">
-          <img src="assets/img/juniper-claus.png?<?= isset($winner[2]) ? $winner[2]['phone'] : '' ?>.jpg" alt="">
+          <img src="assets/photo/<?= isset($winner[2]) ? $winner[2]['phone'] : '' ?>.jpg" alt="">
         </div>
         <h3 data-id="<?= $winner[2]['id'] ?>"><?= isset($winner[2]) ? $winner[2]['fio_passport'] : 'Не определен' ?></h3>
         <span>
@@ -73,7 +73,7 @@ foreach ($users as $user) {
       </div>
       <div class="winner-user">
         <div class="winner-user__img">
-          <img src="assets/img/juniper-claus.png?<?= isset($winner[1]) ? $winner[1]['phone'] : '' ?>.jpg" alt="">
+          <img src="assets/photo/<?= isset($winner[1]) ? $winner[1]['phone'] : '' ?>.jpg" alt="">
         </div>
         <h3 data-id="<?= $winner[1]['id'] ?>"><?= isset($winner[1]) ? $winner[1]['fio_passport'] : 'Не определен' ?></h3>
         <span>
@@ -82,7 +82,7 @@ foreach ($users as $user) {
       </div>
       <div class="winner-user">
         <div class="winner-user__img">
-          <img src="assets/img/juniper-claus.png?<?= isset($winner[3]) ? $winner[3]['phone'] : '' ?>.jpg" alt="">
+          <img src="assets/photo/<?= isset($winner[3]) ? $winner[3]['phone'] : '' ?>.jpg" alt="">
         </div>
         <h3 data-id="<?= $winner[3]['id'] ?>"><?= isset($winner[3]) ? $winner[3]['fio_passport'] : 'Не определен' ?></h3>
         <span>
