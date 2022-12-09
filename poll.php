@@ -88,6 +88,11 @@ include('header.php') ?>
     </div>
 </div>
 
+
+
+<?php
+include('footer.php')
+?>
 <script>
     $(document).ready(function () {
         var users = [];
@@ -108,7 +113,3 @@ include('header.php') ?>
         });
     })
 </script>
-
-<?php
-include('footer.php')
-?>
