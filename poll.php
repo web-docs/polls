@@ -125,10 +125,11 @@ $user_from = Auth::id();
         </div>
     </div>
     <div class="juniper">
-        <h1>Номинация</h1>
         <div class="juniper-img">
             <img src="assets/img/juniper-claus.png" alt="">
         </div>
+        <h1 id="position_title">Начальник года</h1>
+
     </div>
     <form action="poll.php" method="post" id="send">
         <input type="hidden" name="poll" value="1">
@@ -142,6 +143,12 @@ $user_from = Auth::id();
             <?php
             $old_position = '';
 
+            $title = [
+                1=>'Начальник года',
+                2=>'Сотрудник года',
+                3=>'Тех персона года',
+            ];
+
             foreach (User::getUsers(User::ROLE_EMPLOYEE) as $user){
             if ($user_from == $user['id']) {
                 continue;
@@ -152,7 +159,7 @@ $user_from = Auth::id();
             }
             $old_position = $user['position_id'];
             ?>
-            <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>">
+            <div id="position_<?= $user['position_id'] ?>" data-id="<?= $user['position_id'] ?>" data-title="<?=$title[$user['position_id']]?>">
                 <?php
                 } ?>
                 <div class="user" data-id="<?= $user['id'] ?>">
@@ -196,6 +203,8 @@ $user_from = Auth::id();
             if (index == 4) {
                 $('form#send').submit();
             }
+            $('#position_title').text($('#position_' + index).data('title'))
+
         });
     })
 </script>
