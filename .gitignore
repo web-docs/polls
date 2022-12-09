@@ -5,7 +5,7 @@
 /logs/*
 /tmp/*
 /vendor/*
-
+/assets/photo/*
 config.php
 
 .DS_Store
