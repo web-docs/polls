@@ -271,6 +271,7 @@ body {
   background: #9e9e9e;
   border-radius: 10px;
   margin: auto;
+  overflow: hidden;
 }
 
 .user-img img {
