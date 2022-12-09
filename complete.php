@@ -22,103 +22,107 @@ foreach($users as $user) {
 
 </head>
 <body>
-<div class="snowing">
-    <div class="small-snow-left">
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
+<div class="lists">
+  <div class="container">
+    <div class="lists-wrapper">
+      <div class="lists-bg">
+        <div class="lists-rel">
+          <div class="claus-left">
+            <img src="assets/img/raiting-claus-left.png" alt="#">
+          </div>
+          <div class="lists-abs">
+            <div class="bantik">
+              <img src="assets/img/raiting-lents.png" alt="">
+            </div>
+            <div class="lists-title">
+              <span>Рейтинг голосования</span>
+            </div>
+          </div>
+          <div class="claus-right">
+            <img src="assets/img/raiting-claus.png" alt="#">
+          </div>
+        </div>
+      </div>
+      <div class="lists-all">
+        <div class="list-item">
+          <ol>
+            <strong>Начальник года</strong>
+            <li>
+              <p><small>1.</small>KIM STANISLAV</p>
+              <b class="light-green">+100500</b>
+            </li>
+            <li>
+              <p><small>2.</small>ABDUQODIROVA ODINA</p>
+              <b>100</b>
+            </li>
+            <li>
+              <p><small>3.</small>AXMETSHIN MARAT</p>
+              <b>80</b>
+            </li>
+            <li>
+              <p><small>4.</small>KIM OKSANA</p>
+              <b>70</b>
+            </li>
+            <li>
+              <p><small>5.</small>KIM OLGA</p>
+              <b>60</b>
+            </li>
+          </ol>
+        </div>
+        <div class="list-item">
+          <ol>
+            <strong>Сотрудник года</strong>
+            <li>
+              <p><small>1.</small> KIM STANISLAV</p>
+              <b class="light-green">+100500</b>
+            </li>
+            <li>
+              <p><small>2.</small>ABDUQODIROVA ODINA</p>
+              <b>100</b>
+            </li>
+            <li>
+              <p><small>3.</small>AXMETSHIN MARAT</p>
+              <b>80</b>
+            </li>
+            <li>
+              <p><small>4.</small>KIM OKSANA</p>
+              <b>70</b>
+            </li>
+            <li>
+              <p><small>5.</small>KIM OLGA</p>
+              <b>60</b>
+            </li>
+          </ol>
+        </div>
+        <div class="list-item">
+          <ol>
+            <strong>Тех персонал года</strong>
+            <li>
+              <p><small>1.</small>KIM STANISLAV</p>
+              <b class="light-green">+100500</b>
+            </li>
+            <li>
+              <p><small>2.</small>ABDUQODIROVA ODINA</p>
+              <b>100</b>
+            </li>
+            <li>
+              <p><small>3.</small>AXMETSHIN MARAT</p>
+              <b>80</b>
+            </li>
+            <li>
+              <p><small>4.</small>KIM OKSANA</p>
+              <b>70</b>
+            </li>
+            <li>
+              <p><small>5.</small>KIM OLGA</p>
+              <b>60</b>
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
-    <div class="small-snow-right">
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-        <div class="small"></div>
-    </div>
-    <div class="medium-snow-left">
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-    </div>
-    <div class="medium-snow-right">
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-        <div class="medium"></div>
-    </div>
+  </div>
 </div>
-<div class="juniper">
-    <h1>Спасибо! Ваш голос учтен!</h1>
-    <div class="juniper-img">
-        <img src="assets/img/juniper-claus.png" alt="">
-    </div>
-</div>
-
 
 
 <?php // <a href="/?logout">Выйти</a>
