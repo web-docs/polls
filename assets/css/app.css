@@ -1007,7 +1007,7 @@ body {
 .winner-user span {
   width: 100%;
   background: linear-gradient(87.2deg, #600c0a 2.48%, #bf0f11 43.23%, #d03e3e 72.94%, #d95455 98.46%, #e8acac 114.48%, #ebbfbf 119.28%, #d68483 123.32%, #be3f3e 128.75%, #620c0b 140.53%), #d9d9d9;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   padding: 20px;
   font-style: normal;
   font-weight: 700;
@@ -1078,7 +1078,7 @@ body {
   transform: translateY(-45px);
 }
 .list-item  {
-  width: 30%;
+  width: 32%;
   border-right: 1px solid #000000;
   padding-right: 30px;
 }
