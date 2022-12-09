@@ -27,21 +27,9 @@ if (isset($_POST['login'])) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Polls - login</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="assets/libs/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/app.css">
-  <link rel="stylesheet" href="assets/css/media.css">
-</head>
-<body>
 <?php
-include('snow.php') ?>
+include('header.php')
+?>
 
 <div class="login-wrapper">
   <div class="login">
@@ -72,10 +60,6 @@ include('snow.php') ?>
 
 </div>
 
-<script src="assets/libs/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery-2.0.3.min.js"></script>
-<script src="assets/js/input_mask.min.js"></script>
-<script src="assets/js/app.js"></script>
-
-</body>
-</html>
+<?php
+include('footer.php')
+?>

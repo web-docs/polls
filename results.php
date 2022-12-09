@@ -38,17 +38,8 @@ foreach ($users as $user) {
 ?>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Bucheon University in Tashkent | Results</title>
-  <link rel="stylesheet" href="assets/css/app.css">
-
-</head>
-<body>
 <?php
-include('snow.php') ?>
+include('header.php') ?>
 
 <div class="stat-wrapper">
 
@@ -184,5 +175,6 @@ include('snow.php') ?>
 </div>
 
 
-</body>
-</html>
+<?php
+include('footer.php')
+?>

@@ -23,16 +23,8 @@ $percent = 100/$cnt;
 ?>
 
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Bucheon University in Tashkent | Результаты голосования</title>
-        <link rel="stylesheet" href="assets/css/app.css">
-
-
-    </head>
-    <body>
+<?php
+include('header.php') ?>
     <div class="lists">
       <div class="container">
         <div class="lists-wrapper">
@@ -110,5 +102,6 @@ $percent = 100/$cnt;
         </div>
       </div>
     </div>
-    </body>
-</html>
+<?php
+include('footer.php')
+?>
