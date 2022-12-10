@@ -1,12 +1,14 @@
 <?php
 
+// error_reporting(E_ALL);
+
 session_start();
 
-set_include_path(get_include_path() . '/classes' );
+function autoLoader($name) {
+    require 'classes/'.$name.'.php';
+}
 
-spl_autoload_extensions('.php');
-
-spl_autoload_register();
+spl_autoload_register('autoLoader');
 
 DB::init();
 
