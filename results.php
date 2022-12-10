@@ -33,7 +33,7 @@ foreach ($users as $user) {
 
     $n++;
 }
-
+$limit=10; // по 10 шт в каждой номинации
 
 ?>
 
@@ -92,7 +92,7 @@ include('header.php') ?>
               <img src="assets/img/raiting-lents.png" alt="">
             </div>
             <div class="lists-title">
-              <span>Рейтинг голосования</span>
+                <span><a href="/list.php" style="text-decoration: none;color:#fff;">Рейтинг голосования</a></span>
             </div>
           </div>
           <div class="claus-right">
@@ -117,7 +117,7 @@ include('header.php') ?>
                   ?>
                 <li>
                   <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                  <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?> %</b>
+                    <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                 </li>
                   <?php
               } ?>
@@ -140,7 +140,8 @@ include('header.php') ?>
                   ?>
                 <li>
                   <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                  <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?> %</b>
+                  <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
+
                 </li>
                   <?php
               } ?>
@@ -163,7 +164,7 @@ include('header.php') ?>
                   ?>
                 <li>
                   <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                  <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?> %</b>
+                    <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                 </li>
                   <?php
               } ?>

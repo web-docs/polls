@@ -53,7 +53,7 @@ $limit = 10;
                         ?>
                         <li>
                             <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                            <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?> %</b>
+                            <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                         </li>
                     <?php } ?>
                 </ol>
@@ -71,7 +71,7 @@ $limit = 10;
                         ?>
                         <li>
                             <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                            <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?> %</b>
+                            <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                         </li>
                     <?php } ?>
 
@@ -90,7 +90,7 @@ $limit = 10;
                         ?>
                         <li>
                             <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                            <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?> %</b>
+                            <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                         </li>
                     <?php } ?>
                 </ol>

@@ -58,7 +58,7 @@ include('header.php') ?>
                             ?>
                             <li>
                                 <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                                <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?> %</b>
+                                <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                             </li>
                         <?php } ?>
                     </ol>
@@ -75,7 +75,7 @@ include('header.php') ?>
                             ?>
                             <li>
                                 <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                                <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?> %</b>
+                                <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                             </li>
                         <?php } ?>
 
@@ -93,7 +93,7 @@ include('header.php') ?>
                             ?>
                             <li>
                                 <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                                <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?> %</b>
+                                <b class="light-green"><?=number_format($user['cnt']*$percent,2,'.','') ?>%</b>
                             </li>
                         <?php } ?>
                     </ol>

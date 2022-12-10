@@ -15,6 +15,10 @@ if (isset($_POST['register'])) {
         $error = $_SESSION['error'];
     }
 }
+
+$info = @$_SESSION['info'];
+
+
 ?>
 
 
@@ -29,6 +33,14 @@ if (isset($_POST['register'])) {
       padding: 15px;
       margin: 10px;
     }
+      .alert.success{
+          background: #46783a;
+          color: #fff;
+          border-radius: 5px;
+          width: 500px;
+          padding: 15px;
+          margin: 10px;
+      }
   </style>
 <div class="juniper">
   <h1>Регистрация</h1>
@@ -44,6 +56,10 @@ if (isset($_POST['register'])) {
 if ($error) { ?>
   <div class="alert"><?= $error ?></div>
 <?php
+}
+if ($info) { ?>
+    <div class="alert success"><?= $info ?></div>
+    <?php
 }
 
 ?>

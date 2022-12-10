@@ -44,7 +44,7 @@ class Auth{
             return false;
         }
 
-        $uploaddir = 'assets/photo/';
+        $uploaddir = isset($_SERVER['DOCUMENT_ROOT']) ? $_SERVER['DOCUMENT_ROOT'].'/assets/photo/' : 'assets/photo/';
         $uploadfile = $uploaddir . $data['phone'] . '.jpg';
 
         if (!move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile)) {
@@ -58,6 +58,8 @@ class Auth{
         //$_SESSION['login'] = true;
         //unset($user['password']);
         //$_SESSION['user'] = $user;
+        $_SESSION['info'] = 'Регистрация прошла успешно!';
+
         return true;
     }
 
