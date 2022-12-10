@@ -9,8 +9,8 @@ if (Auth::check()) {
 
 if (isset($_POST['register'])) {
     if ($user = Auth::register()) {
-        Auth::redirect('poll.php');
-        exit;
+        //Auth::redirect('poll.php');
+        //exit;
     } else {
         $error = $_SESSION['error'];
     }
@@ -49,7 +49,7 @@ if ($error) { ?>
 ?>
 
 <div class="register">
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     <input type="hidden" name="register" value="1">
     <div>
       <label><input type="text" name="fio_passport" required>ФИО (по паспорту)</label>
@@ -78,6 +78,12 @@ if ($error) { ?>
     <div>
       <label><input type="text" name="password" required>Пароль</label>
     </div>
+    <div>
+      <label><input type="file" name="photo" required>Фото</label>
+    </div>
+
+
+
     <input type="submit" value="Зарегистрировать">
   </form>
 </div>
