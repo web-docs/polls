@@ -37,9 +37,9 @@ include('header.php') ?>
                 <div class="bantik">
                   <img src="assets/img/raiting-lents.png" alt="">
                 </div>
-                <div class="lists-title">
-                  <span>Рейтинг голосования</span>
-                </div>
+                  <div class="lists-title">
+                      <span><a href="/list.php">Рейтинг <small>голосования</small> </a></span>
+                  </div>
               </div>
               <div class="claus-right">
                 <img src="assets/img/raiting-claus.png" alt="#">
