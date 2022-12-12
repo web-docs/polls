@@ -7,6 +7,15 @@ $count = isset($_GET['c']) ? $_GET['c'] : 150;
 <?php
 include("header.php");
 ?>
+
+<div class="popup">
+    <div class="popup-wrap">
+        <h1 id="title">Укажите количество участников:</h1>
+        <input type="text" value="0" id="count">
+        <button id="set">Начать</button>
+    </div>
+</div>
+
 <div class="lotto">
   <div class="container">
     <div class="lotto-wrap">
