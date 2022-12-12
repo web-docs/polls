@@ -25,7 +25,13 @@ $user_from = Auth::id();
 <?php
 include('header.php') ?>
 <div class="poll-wrapper">
-
+  <div class="popup">
+    <div class="popup-wrap">
+      <div>Укажите лучшего по вашему мнению в номинации</div>
+      <h1 id="title">Начальник года</h1>
+      <button id="next">Продолжить</button>
+    </div>
+  </div>
   <div class="juniper">
     <div class="juniper-img">
       <img src="assets/img/juniper-claus.png" alt="">
@@ -41,6 +47,7 @@ include('header.php') ?>
 
     <div class="container juniper-container">
         <div class="poll-lists">
+
 
             <?php
             $old_position = '';
@@ -89,11 +96,7 @@ include('header.php') ?>
 </div>
 
 
-<div class="popup">
-    <div>Укажите лучшего по вашему мнению в номинации</div>
-    <h1 id="title">Начальник года</h1>
-    <button id="next">Продолжить</button>
-</div>
+
 
 
 
@@ -112,7 +115,7 @@ include('footer.php')
             'Тех персонал года'
         ];
 
-        $('.popup').css('display','block');
+        // $('.popup').css('display','block');
         $('.popup #title').text(nom[index])
 
         $('.user').click(function () {
