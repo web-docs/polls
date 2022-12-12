@@ -12,7 +12,7 @@ include("header.php");
     <div class="popup-wrap">
         <h1 id="title">Укажите количество участников:</h1>
         <input type="text" value="0" id="count">
-        <button id="set">Начать</button>
+        <button id="set_count">Начать</button>
     </div>
 </div>
 
@@ -104,8 +104,27 @@ include("footer.php");
     var results_2 = document.querySelector('#results_2');
     var results_3 = document.querySelector('#results_3');
 
+    /*
+    document.querySelector('#set_count').onclick = function () {
+        popup = document.querySelector('.popup');
+        popup.style['dipslay'] = 'none';
+    } */
+
+    $('#set_count').click(function(){
+        $('.popup').css('display','none');
+        max = $('.popup #count').val();
+        if(max<=0) max=100;
+
+        res = correctNumber(max);
+        results_1.innerHTML = res[0];
+        results_2.innerHTML = res[1];
+        results_3.innerHTML = res[2];
+
+    })
+
+
     document.querySelector('.generate').onclick = function () {
-        var time = 5000;
+        var time = 2000;
         var delay = 80;
         var timerId;
         var res = [];
