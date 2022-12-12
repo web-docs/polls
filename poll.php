@@ -134,7 +134,7 @@ include('footer.php')
             $('#position_title').text($('#position_' + index).data('title'))
 
             $('.popup #title').text(nom[index])
-            $('.popup').css('display','block');
+            $('.popup').css('display','flex');
 
         });
         $('#next').click(function(){
