@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `polls` (
   KEY `user_id` (`user_from`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.polls: ~6 rows (приблизительно)
+-- Дамп данных таблицы polls.polls: ~9 rows (приблизительно)
 INSERT INTO `polls` (`id`, `user_from`, `user_to`, `created_at`) VALUES
 	(43, 2, 34, '2022-12-06 09:34:12'),
 	(44, 2, 51, '2022-12-06 09:34:12'),
@@ -35,7 +35,16 @@ INSERT INTO `polls` (`id`, `user_from`, `user_to`, `created_at`) VALUES
 	(48, 2, 111, '2022-12-06 09:39:57'),
 	(49, 2, 21, '2022-12-06 16:25:07'),
 	(50, 2, 71, '2022-12-06 16:25:07'),
-	(51, 2, 163, '2022-12-06 16:25:07');
+	(51, 2, 163, '2022-12-06 16:25:07'),
+	(52, 3, 21, '2022-12-06 16:25:07'),
+	(53, 3, 71, '2022-12-06 16:25:07'),
+	(54, 4, 71, '2022-12-06 16:25:07'),
+	(55, 267, 21, '2022-12-06 17:44:03'),
+	(56, 267, 51, '2022-12-06 17:44:03'),
+	(57, 267, 111, '2022-12-06 17:44:03'),
+	(58, 268, 31, '2022-12-06 17:44:51'),
+	(59, 268, 54, '2022-12-06 17:44:51'),
+	(60, 268, 117, '2022-12-06 17:44:51');
 
 -- Дамп структуры для таблица polls.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -55,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `phone` (`phone`)
 ) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы polls.users: ~225 rows (приблизительно)
+-- Дамп данных таблицы polls.users: ~226 rows (приблизительно)
 INSERT INTO `users` (`id`, `role`, `status`, `department`, `position`, `position_id`, `fio_passport`, `fio`, `phone`, `password`, `created_at`, `updated_at`) VALUES
 	(1, 9, 1, 'admin', 'admin', 9, 'user', 'lastname', '903002010', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05', '2022-12-05 15:42:04'),
 	(2, 1, 2, 'test', 'admin', 9, 'user', 'lastname', '903002011', '1bbd886460827015e5d605ed44252251', '2022-11-29 11:34:05', '2022-12-06 16:25:07'),
@@ -282,7 +291,9 @@ INSERT INTO `users` (`id`, `role`, `status`, `department`, `position`, `position
 	(263, 1, 1, 'Кафедра корейского языка и менеджмента', 'Преподаватель английского языка', 4, 'YULDASHEVA SHAXNOZA AZAMATOVNA', 'ЮЛДАШЕВА ШАХНОЗА АЗАМАТОВНА', '977383919', NULL, NULL, NULL),
 	(264, 1, 1, 'Кафедра архитектуры', 'Лаборант-стажер', 4, 'YUSUPOV KAMOLIDDIN ALIJON O`G`LI', 'ЮСУПОВ КАМОЛИДДИН АЛИЖОН УГЛИ', '909572870', NULL, NULL, NULL),
 	(265, 1, 1, 'Кафедра дошкольного образования дневного отделения', 'Преподаватель по дошкольному образованию', 4, 'ZAXIDOVA DILFUZA ABDUXALILOVNA', 'ЗАХИДОВА ДИЛФУЗА АБДУХАЛИЛОВНА', '974504818', NULL, NULL, NULL),
-	(266, 1, 1, 'Кафедра дошкольного образования дневного отделения', 'Лаборант-стажер', 4, 'ZAYNIDDINXO`JAYEV RIXSIXO`JA FAXRIDDIN O`G`LI', 'ЗАЙНИДДИНХУЖАЕВ РИХСИХУЖА ФАХРИДДИН УГЛИ', '974018893', NULL, NULL, NULL);
+	(266, 1, 1, 'Кафедра дошкольного образования дневного отделения', 'Лаборант-стажер', 4, 'ZAYNIDDINXO`JAYEV RIXSIXO`JA FAXRIDDIN O`G`LI', 'ЗАЙНИДДИНХУЖАЕВ РИХСИХУЖА ФАХРИДДИН УГЛИ', '974018893', NULL, NULL, NULL),
+	(267, 1, 2, 'фывфывфы', 'ыфвыва', 1, 'aaa bbb ccc', 'ффф ааа ппп', '903285422', '1bbd886460827015e5d605ed44252251', '2022-12-06 17:33:18', '2022-12-06 17:44:03'),
+	(268, 1, 2, 'выаыва ', 'укцукцукцу', 2, 'aaasds asdsd asdasd', 'фываы аыкауцк уцук', '903285401', '1bbd886460827015e5d605ed44252251', '2022-12-06 17:44:41', '2022-12-06 17:44:51');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
