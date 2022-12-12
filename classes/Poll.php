@@ -7,8 +7,17 @@ class Poll{
 		return $result;
 	}
 
-	public static function stat($limit=3){
-	    $result = DB::query("SELECT u.id, p.user_to, COUNT(p.user_from) AS cnt,u.fio_passport,u.position,u.position_id FROM polls p INNER JOIN users u ON u.id=p.user_to and u.position_id in (1,2,3) where u.position_id in (1,2,3)  GROUP BY u.position_id, p.user_to ORDER BY u.position_id ASC, cnt DESC, p.created_at ASC LIMIT {$limit}");
+	public static function stat(){
+	    $result = DB::query(" SELECT u.id, p.cnt,u.fio_passport,u.position,u.position_id
+                 FROM (
+                     SELECT COUNT(p.user_to) as cnt, p.user_to FROM polls p
+                     GROUP BY p.user_to
+                     ORDER BY cnt DESC
+                 ) AS p
+                
+                 INNER JOIN users u ON u.id=p.user_to 
+                 WHERE u.position_id in (1,2,3)  
+                 ORDER BY u.position_id ASC, cnt DESC");
         return $result;
     }
     

@@ -44,11 +44,22 @@ class Auth{
             return false;
         }
 
+        $uploaddir = isset($_SERVER['DOCUMENT_ROOT']) ? $_SERVER['DOCUMENT_ROOT'].'/assets/photo/' : 'assets/photo/';
+        $uploadfile = $uploaddir . $data['phone'] . '.jpg';
+
+        if (!move_uploaded_file($_FILES['photo']['tmp_name'], $uploadfile)) {
+            $_SESSION['error'] = 'Ошибка файла, укажите другой!';
+            return false;
+        }
+
         $data['password'] = md5($data['password']);
         $user = User::create($data);
-        $_SESSION['login'] = true;
-        unset($user['password']);
-        $_SESSION['user'] = $user;
+
+        //$_SESSION['login'] = true;
+        //unset($user['password']);
+        //$_SESSION['user'] = $user;
+        $_SESSION['info'] = 'Регистрация прошла успешно!';
+
         return true;
     }
 
