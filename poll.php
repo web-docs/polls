@@ -89,6 +89,13 @@ include('header.php') ?>
 </div>
 
 
+<div class="popup">
+    <div>Укажите лучшего по вашему мнению в номинации</div>
+    <h1 id="title">Начальник года</h1>
+    <button id="next">Продолжить</button>
+</div>
+
+
 
 <?php
 include('footer.php')
@@ -96,6 +103,18 @@ include('footer.php')
 <script>
     $(document).ready(function () {
         var users = [];
+        var index = 1;
+
+        var nom = [
+            '',
+            'Начальник года',
+            'Сотрудник года',
+            'Тех персонал года'
+        ];
+
+        $('.popup').css('display','block');
+        $('.popup #title').text(nom[index])
+
         $('.user').click(function () {
             index = $(this).parent().data('id');
             $('#position_' + index).css('display', 'none');
@@ -103,6 +122,7 @@ include('footer.php')
             $('#position_' + index).css({'display': 'flex', 'justify-content': 'space-between', 'flex-wrap': 'wrap'});
 
             users.push($(this).data('id'))
+
             $('#user_to').val(users);
 
             if (index == 4) {
@@ -110,6 +130,13 @@ include('footer.php')
             }
             $('#position_title').text($('#position_' + index).data('title'))
 
+            $('.popup #title').text(nom[index])
+            $('.popup').css('display','block');
+
         });
+        $('#next').click(function(){
+            $('.popup').css('display','none');
+        })
+
     })
 </script>
