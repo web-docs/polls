@@ -1,6 +1,12 @@
 <?php
 
-$count = isset($_GET['c']) ? $_GET['c'] : 150;
+require 'init.php';
+
+if( isset($_POST['num']) && isset($_POST['ajax']) ){
+
+    return ['status'=>Present::setStatus(1,$_POST['num'])];
+
+}
 
 ?>
 
@@ -13,13 +19,15 @@ include("header.php");
 <div class="lotto">
   <div class="container">
     <div class="lotto-wrap">
-      <div class="popup">
+
+        <?php /* <div class="popup">
         <div class="popup-wrap">
           <h1 id="title">Укажите количество участников:</h1>
           <input type="text" value="" id="count" maxlength="3">
           <button id="set_count">Начать</button>
         </div>
-      </div>
+      </div> */ ?>
+
       <div class="lotto-title">
         <div class="lotto-dotted"></div>
         <div class="border">
@@ -57,9 +65,9 @@ include("header.php");
         <div class="lotto-count__bg">
           <div class="bingo">!BINGO!</div>
           <div class="spinner">
-            <span id="results_1">0</span>
-            <span id="results_2">0</span>
-            <span id="results_3">0</span>
+            <img id="results_1" src="assets/img/presents/1.png">
+            <img id="results_2" src="assets/img/presents/2.png">
+            <img id="results_3" src="assets/img/presents/3.png">
           </div>
         </div>
         <div class="lotto-start">
@@ -69,21 +77,6 @@ include("header.php");
             </a>
           </div>
         </div>
-        <!--        <div class="spinner">-->
-        <!--          <span id="results_1">0</span>-->
-        <!--          <span id="results_2">0</span>-->
-        <!--          <span id="results_3">0</span>-->
-        <!--        </div>-->
-        <!---->
-        <!--        <button class="generate number">-->
-        <!--          START-->
-        <!--        </button>-->
-        <!---->
-        <!---->
-        <!--        <div id="results">-->
-        <!--          <span id="result_list"></span>-->
-        <!---->
-        <!--        </div>-->
       </div>
     </div>
   </div>
@@ -96,52 +89,46 @@ include("header.php");
 include("footer.php");
 ?>
 <script>
-    var min = 1;
-    var max = '<?=$count ?>';
-    var k = 0;
-    var numbers = [];
+
+    var numbers = [<?= implode(',',Present::off()) ?>];
+    var presents = <?= Present::on() ?>;
+   // var presents = [{'id':1}];
+
+    var min = 0;
+    var max = presents.length -1;
+
     var results = document.querySelector('#result_list');
+
+    var path = 'assets/img/presents/';
+
     var results_1 = document.querySelector('#results_1');
     var results_2 = document.querySelector('#results_2');
     var results_3 = document.querySelector('#results_3');
-
-    /*
-    document.querySelector('#set_count').onclick = function () {
-        popup = document.querySelector('.popup');
-        popup.style['dipslay'] = 'none';
-    } */
-
-    $('#set_count').click(function(){
-        $('.popup').css('display','none');
-        max = $('.popup #count').val();
-        if(max<=0) max=100;
-
-        res = correctNumber(max);
-        results_1.innerHTML = res[0];
-        results_2.innerHTML = res[1];
-        results_3.innerHTML = res[2];
-
-    })
-
 
     document.querySelector('.generate').onclick = function () {
         var time = 2000;
         var delay = 80;
         var timerId;
-        var res = [];
+
+
+        if(presents.length==0) {
+            results_1.src = path + 'x.png';
+            results_2.src = path + 'x.png';
+            results_3.src = path + 'x.png';
+            return false;
+        }
         timerId = setInterval(function random() {
             time -= delay;
-            num = getRandom();
 
-            res = correctNumber(num);
-            results_1.innerHTML = res[0];
-            results_2.innerHTML = res[1];
-            results_3.innerHTML = res[2];
+            results_1.src = path + presents[getRandom()].type + '.png';
+            results_2.src = path + presents[getRandom()].type + '.png';
+            results_3.src = path + presents[getRandom()].type + '.png';
+
+            console.log(time);
 
             if (time <= 0) {
                 clearInterval(timerId);
-                k++;
-
+                num = getRandom();
                 while (numbers.indexOf(num) >= 0) {
 
                     if (numbers.length == max) {
@@ -150,14 +137,26 @@ include("footer.php");
                     }
                     num = getRandom();
                 }
-                res = correctNumber(num);
-                results_1.innerHTML = res[0];
-                results_2.innerHTML = res[1];
-                results_3.innerHTML = res[2];
+                results_1.src = path + presents[num].type + '.png';
+                results_2.src = path + presents[num].type + '.png';
+                results_3.src = path + presents[num].type + '.png';
+
                 if (num > 0) {
                     numbers.push(num);
-                    results.innerHTML += k + '. <b>' + num + '</b><br>';
+                    presents.splice( num, 1 );
                 }
+
+                if(presents) {
+                    max = presents.length - 1;
+                }
+                else{
+                    alert('no presents!')
+                    max = 0;
+                    $('.generate').css('display','none');
+                }
+
+                presentOff(num);
+
             }
         }, delay);
 
@@ -189,6 +188,27 @@ include("footer.php");
             path.style["animation"] = `${duration}s svg-text-anim ${mode} ${timingFunction}`;
             path.style["animation-delay"] = `${i * delay}s`;
         }
+    }
+
+    function presentOff(num){
+
+        $.ajax({
+            type: 'post',
+            url: '/present.php',
+            data: {num: num, ajax: true},
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            },
+            success: function(response) {
+                if (response.status=false) {
+                    alert('error')
+                }
+            },
+            error: function(e) {
+                alert(e)
+            }
+        });
+
     }
 
     setTextAnimation(0.2, 4.8, 1, 'linear', '#fff', true);
