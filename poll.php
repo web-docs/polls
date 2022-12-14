@@ -21,6 +21,8 @@ if (isset($_POST['poll'])) {
 
 $user_from = Auth::id();
 
+$lang = $_SESSION['lang']=='en'? '_en':'';
+
 ?>
 <?php
 include('header.php') ?>
@@ -34,7 +36,7 @@ include('header.php') ?>
   </div>
   <div class="juniper">
     <div class="juniper-img">
-      <img src="assets/img/juniper-claus<?=$_SESSION['lang'] ?>.png" alt="">
+      <img src="assets/img/juniper-claus<?=$lang ?>.png" alt="">
     </div>
     <h1 id="position_title"><?= __('Начальник года') ?></h1>
 
