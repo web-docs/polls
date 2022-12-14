@@ -6,13 +6,13 @@
     width: 100%;
     min-height: 100%;
   }
+
   .snow-canvas {
     pointer-events: none;
     position: absolute;
     width: 100%;
     height: 100%;
   }
-
   /* TEMPORAL */
   .debug-sliders {
     position: absolute;
@@ -23,6 +23,14 @@
     z-index: 10;
     display: flex;
     flex-direction: column;
+  }
+  .background.active {
+    overflow: hidden !important;
+    background: #000000ba !important;
+    z-index: 10;
+  }
+  .background.active .snow-canvas {
+    display: none;
   }
 
 </style>
