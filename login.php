@@ -38,6 +38,14 @@ include('header.php')
           <img src="assets/img/login.svg" class="login-desktop__img" alt="">
             <img src="assets/img/login-mobile.png" class="login-mobile__img" alt="">
           <form action="" method="POST" class="login-form">
+            <div class="flags">
+              <a href="lang.php?lang=ru">
+                <img src="assets/img/ru.png" alt="Russian">
+              </a>
+              <a href="lang.php?lang=en">
+                <img src="assets/img/en.png" alt="English">
+              </a>
+            </div>
             <div class="form-group">
               <label class="form-label"><?=__('Телефон')?></label>
               <div class="login-icon">
