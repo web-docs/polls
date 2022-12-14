@@ -85,6 +85,7 @@ if ($info) { ?>
         <option value="1">Начальник</option>
         <option value="2">Сотрудник</option>
         <option value="3">Тех персонал</option>
+        <option value="4">Только голосование</option>
       </select>
     </div>
     <div>
