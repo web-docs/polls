@@ -20,7 +20,6 @@ if (isset($_POST['login'])) {
         Auth::redirect('poll.php');
     } else {
         $error = "Логин или пароль не верны";
-        d($_POST, 1);
     }
 }
 
@@ -40,18 +39,18 @@ include('header.php')
             <img src="assets/img/login-mobile.png" class="login-mobile__img" alt="">
           <form action="" method="POST" class="login-form">
             <div class="form-group">
-              <label class="form-label">Телефон</label>
+              <label class="form-label"><?=__('Телефон')?></label>
               <div class="login-icon">
-                <input type="text" name="login" class="form-control phone-mask" placeholder="Введите номер телефона">
+                <input type="text" name="login" class="form-control phone-mask" placeholder="<?=__('Введите номер телефона')?>" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Пароль</label>
+              <label class="form-label"><?=__('Пароль')?></label>
               <div class="password-icon">
-                <input type="password" name="password" class="form-control" placeholder="Введите пароль">
+                <input type="password" name="password" class="form-control" placeholder="<?=__('Введите пароль')?>" required>
               </div>
             </div>
-            <input type="submit" value="Войти" class="login-submit">
+            <input type="submit" value="<?=__('Войти')?>" class="login-submit">
           </form>
         </div>
       </div>
