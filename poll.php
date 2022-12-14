@@ -136,6 +136,7 @@ include('footer.php')
 
             $('.popup #title').text(nom[index])
             $('.popup').css('display','flex');
+            $('.background').addClass('active')
 
         });
         $('#next').click(function(){
