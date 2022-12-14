@@ -27,7 +27,7 @@ include('header.php') ?>
 <div class="poll-wrapper">
   <div class="popup">
     <div class="popup-wrap">
-      <div>Укажите лучшего по вашему мнению в номинации</div>
+      <p>Укажите лучшего по вашему мнению в номинации</p>
       <h1 id="title">Начальник года</h1>
       <button id="next">Продолжить</button>
     </div>
@@ -114,6 +114,7 @@ include('footer.php')
             'Сотрудник года',
             'Тех персонал года'
         ];
+        $('.background').addClass('active')
 
         // $('.popup').css('display','block');
         $('.popup #title').text(nom[index])
@@ -139,6 +140,8 @@ include('footer.php')
         });
         $('#next').click(function(){
             $('.popup').css('display','none');
+            $('.background').removeClass('active')
+
         })
 
     })
