@@ -34,7 +34,7 @@ include('header.php') ?>
   </div>
   <div class="juniper">
     <div class="juniper-img">
-      <img src="assets/img/juniper-claus.png" alt="">
+      <img src="assets/img/juniper-claus<?=$_SESSION['lang'] ?>.png" alt="">
     </div>
     <h1 id="position_title"><?= __('Начальник года') ?></h1>
 
@@ -53,9 +53,9 @@ include('header.php') ?>
             $old_position = '';
 
             $title = [
-                1=>'Начальник года',
-                2=>'Сотрудник года',
-                3=>'Тех персонал года',
+                1=>'"' . __('Начальник года') . '"',
+                2=>'"' .__('Сотрудник года'). '"',
+                3=>'"' .__('Тех персонал года'). '"',
             ];
 
             foreach (User::getUsers(User::ROLE_EMPLOYEE) as $user){
@@ -110,9 +110,9 @@ include('footer.php')
 
         var nom = [
             '',
-            'Начальник года',
-            'Сотрудник года',
-            'Тех персонал года'
+            <?='"'.__('Начальник года'). '"'?>,
+            <?='"'.__('Сотрудник года'). '"'?>,
+            <?='"'.__('Тех персонал года'). '"'?>
         ];
         $('.background').addClass('active')
 
