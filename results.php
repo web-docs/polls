@@ -59,21 +59,21 @@ include('header.php') ?>
                         <img src="assets/photo/<?= isset($winner[2]) ? $winner[2]['phone'] : '' ?>.jpg" alt="">
                     </div>
                     <h3 data-id="<?= $winner[2]['id'] ?>"><?= isset($winner[2]) ? $winner[2]['fio_passport'] : 'Не определен' ?></h3>
-                    <span>Сотрудник года</span>
+                    <span><?= __('Сотрудник года') ?></span>
                 </div>
                 <div class="winner-user">
                     <div class="winner-user__img">
                         <img src="assets/photo/<?= isset($winner[1]) ? $winner[1]['phone'] : '' ?>.jpg" alt="">
                     </div>
                     <h3 data-id="<?= $winner[1]['id'] ?>"><?= isset($winner[1]) ? $winner[1]['fio_passport'] : 'Не определен' ?></h3>
-                    <span>Начальник года</span>
+                    <span><?= __('Начальник года') ?></span>
                 </div>
                 <div class="winner-user">
                     <div class="winner-user__img">
                         <img src="assets/photo/<?= isset($winner[3]) ? $winner[3]['phone'] : '' ?>.jpg" alt="">
                     </div>
                     <h3 data-id="<?= $winner[3]['id'] ?>"><?= isset($winner[3]) ? $winner[3]['fio_passport'] : 'Не определен' ?></h3>
-                    <span>Тех персона года</span>
+                    <span><?= __('Тех персона года') ?></span>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@ include('header.php') ?>
                         <img src="assets/photo/<?= isset($winner[1]) ? $winner[1]['phone'] : '' ?>.jpg" alt="">
                     </div>
                     <h3 data-id="<?= $winner[1]['id'] ?>"><?= isset($winner[1]) ? $winner[1]['fio_passport'] : 'Не определен' ?></h3>
-                    <span>Начальник года</span>
+                    <span><?= __('Начальник года') ?></span>
                 </div>
 
                 <div class="winner-user">
@@ -94,14 +94,14 @@ include('header.php') ?>
                         <img src="assets/photo/<?= isset($winner[2]) ? $winner[2]['phone'] : '' ?>.jpg" alt="">
                     </div>
                     <h3 data-id="<?= $winner[2]['id'] ?>"><?= isset($winner[2]) ? $winner[2]['fio_passport'] : 'Не определен' ?></h3>
-                    <span>Сотрудник года</span>
+                    <span><?= __('Сотрудник года') ?></span>
                 </div>
                 <div class="winner-user">
                     <div class="winner-user__img">
                         <img src="assets/photo/<?= isset($winner[3]) ? $winner[3]['phone'] : '' ?>.jpg" alt="">
                     </div>
                     <h3 data-id="<?= $winner[3]['id'] ?>"><?= isset($winner[3]) ? $winner[3]['fio_passport'] : 'Не определен' ?></h3>
-                    <span>Тех персона года</span>
+                    <span><?= __('Тех персона года') ?></span>
                 </div>
             </div>
         </div>
@@ -120,7 +120,7 @@ include('header.php') ?>
                                 <img src="assets/img/raiting-lents.png" alt="">
                             </div>
                             <div class="lists-title">
-                                <span><a href="/list.php">Рейтинг <small>голосования</small> </a></span>
+                                <span><a href="/list.php">><?= __('Рейтинг') ?> <small><?= __('голосования') ?></small> </a></span>
                             </div>
                         </div>
                         <div class="claus-right">
@@ -131,7 +131,7 @@ include('header.php') ?>
                 <div class="lists-all">
                     <div class="list-item">
                         <ol>
-                            <strong>Сотрудник года</strong>
+                            <strong><?= __('Сотрудник года') ?></strong>
                             <?php
                             $n = 0;
                             foreach ($users as $user) {
@@ -154,7 +154,7 @@ include('header.php') ?>
                     </div>
                     <div class="list-item">
                         <ol>
-                            <strong>Начальник года</strong>
+                            <strong><?= __('Начальник года') ?></strong>
 
                             <?php
                             $n = 0;
@@ -180,7 +180,7 @@ include('header.php') ?>
                     </div>
                     <div class="list-item">
                         <ol>
-                            <strong>Тех персонал года</strong>
+                            <strong><?= __('Тех персонал года') ?></strong>
                             <?php
                             $n = 0;
                             foreach ($users as $user) {
@@ -205,7 +205,7 @@ include('header.php') ?>
                 <div class="lists-all__mobile">
                     <div class="list-item">
                         <ol>
-                            <strong>Начальник года</strong>
+                            <strong><?= __('Начальник года') ?></strong>
 
                             <?php
                             $n = 0;
@@ -231,7 +231,7 @@ include('header.php') ?>
                     </div>
                     <div class="list-item">
                         <ol>
-                            <strong>Сотрудник года</strong>
+                            <strong><?= __('Сотрудник года') ?></strong>
                             <?php
                             $n = 0;
                             foreach ($users as $user) {
@@ -254,7 +254,7 @@ include('header.php') ?>
                     </div>
                     <div class="list-item">
                         <ol>
-                            <strong>Тех персонал года</strong>
+                            <strong><?= __('Тех персонал года') ?></strong>
                             <?php
                             $n = 0;
                             foreach ($users as $user) {

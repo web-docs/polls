@@ -73,7 +73,7 @@ include("header.php");
         <div class="lotto-start">
           <div class="lotto-bg">
             <a class="lotto-start__btn generate">
-              START
+              <?= __('СТАРТ') ?>
             </a>
           </div>
         </div>

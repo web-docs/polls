@@ -27,16 +27,16 @@ include('header.php') ?>
 <div class="poll-wrapper">
   <div class="popup">
     <div class="popup-wrap">
-      <p>Укажите лучшего по вашему мнению в номинации</p>
-      <h1 id="title">Начальник года</h1>
-      <button id="next">Продолжить</button>
+      <p><?= __('Укажите лучшего по вашему мнению в номинации') ?></p>
+      <h1 id="title"><?= __('Начальник года') ?></h1>
+      <button id="next"><?= __('Продолжить') ?></button>
     </div>
   </div>
   <div class="juniper">
     <div class="juniper-img">
       <img src="assets/img/juniper-claus.png" alt="">
     </div>
-    <h1 id="position_title">Начальник года</h1>
+    <h1 id="position_title"><?= __('Начальник года') ?></h1>
 
   </div>
   <form action="poll.php" method="post" id="send">
@@ -78,7 +78,7 @@ include('header.php') ?>
                     <label>
                         <?= $user['fio_passport'] ?>
                     </label>
-                    <a href="#">Голосовать</a>
+                    <a href="#"><?= __('Голосовать') ?></a>
                 </div>
                 <?php
                 } ?>

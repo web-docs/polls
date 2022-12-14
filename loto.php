@@ -15,7 +15,7 @@ include("header.php");
     <div class="lotto-wrap">
       <div class="popup">
         <div class="popup-wrap">
-          <h1 id="title">Укажите количество участников:</h1>
+          <h1 id="title"><?= __('Укажите количество участников:') ?></h1>
           <input type="text" value="" id="count" maxlength="3">
           <button id="set_count">Начать</button>
         </div>
@@ -65,7 +65,7 @@ include("header.php");
         <div class="lotto-start">
           <div class="lotto-bg">
             <a class="lotto-start__btn generate">
-              START
+              <?= __('СТАРТ') ?>
             </a>
           </div>
         </div>

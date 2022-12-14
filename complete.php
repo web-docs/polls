@@ -26,7 +26,7 @@ include('header.php') ?>
 <!--        <img src="assets/img/winner.png" alt="">-->
 <!--      </div>-->
     </div>
-    <h1 class="thanks">Спасибо! <br> Ваш голос учтён!</h1>
+    <h1 class="thanks"><?= __('Спасибо!') ?> <br> <?= __('Ваш голос учтён!') ?></h1>
 
   </div>
 <!--  <div class="lists">-->

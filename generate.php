@@ -17,8 +17,8 @@ include('header.php') ?>
     }
   </style>
   <div>
-    <button class="btn">Generate a random number</button>
-    <p class="reply"> The random number is <span class='nbr'>...</span></p>
+    <button class="btn"><?= __('Сгенерировать случайное число') ?></button>
+    <p class="reply"> <?= __('Случайное число') ?> <span class='nbr'>...</span></p>
   </div>
   <script>
       $(document).ready(function () {

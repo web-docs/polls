@@ -38,7 +38,7 @@ include('header.php') ?>
                   <img src="assets/img/raiting-lents.png" alt="">
                 </div>
                   <div class="lists-title">
-                      <span><a href="/list.php">Рейтинг <small>голосования</small> </a></span>
+                      <span><a href="/list.php"><?= __('Рейтинг') ?> <small><?= __('голосования') ?></small> </a></span>
                   </div>
               </div>
               <div class="claus-right">
@@ -49,7 +49,7 @@ include('header.php') ?>
             <div class="lists-all">
                 <div class="list-item">
                     <ol>
-                        <strong>Сотрудник года</strong>
+                        <strong><?= __('Сотрудник года') ?></strong>
                         <?php
                         $n=0;
                         foreach($users as $user ){
@@ -65,7 +65,7 @@ include('header.php') ?>
                 </div>
                 <div class="list-item">
                     <ol>
-                        <strong>Начальник года</strong>
+                        <strong><?= __('Начальник года') ?></strong>
 
                         <?php
                         $n=0;
@@ -84,7 +84,7 @@ include('header.php') ?>
 
                 <div class="list-item">
                     <ol>
-                        <strong>Тех персонал года</strong>
+                        <strong><?= __('Тех персонал года') ?></strong>
                         <?php
                         $n = 0;
                         foreach($users as $user ){

@@ -67,39 +67,39 @@ if ($info) { ?>
   <form method="post" enctype="multipart/form-data">
     <input type="hidden" name="register" value="1">
     <div>
-      <label><input type="text" name="fio_passport" required>ФИО (по паспорту)</label>
+      <label><input type="text" name="fio_passport" required><?= __('ФИО (по паспорту)') ?></label>
     </div>
     <div>
-      <label><input type="text" name="fio" required>ФИО (кирилица)</label>
+      <label><input type="text" name="fio" required><?= __('ФИО (кирилица)') ?></label>
     </div>
     <div>
-      <label><input type="text" name="department" required>Отдел</label>
+      <label><input type="text" name="department" required><?= __('Отдел') ?></label>
     </div>
     <div>
-      <label><input type="text" name="position" required>Должность</label>
+      <label><input type="text" name="position" required><?= __('Должность') ?></label>
     </div>
     <div>
-      <label>Категория</label>
+      <label><?= __('Категория') ?></label>
       <select name="position_id" required>
-        <option value="1">Начальник</option>
-        <option value="2">Сотрудник</option>
-        <option value="3">Тех персонал</option>
+        <option value="1"><?= __('Начальник') ?></option>
+        <option value="2"><?= __('Сотрудник') ?></option>
+        <option value="3"><?= __('Тех персонал') ?></option>
       </select>
     </div>
     <div>
-      <label><input type="text" name="phone" required>Телефон (без кода 998)</label>
+      <label><input type="text" name="phone" required><?= __('Телефон (без кода 998)') ?></label>
     </div>
 
     <div>
-      <label><input type="text" name="password" required>Пароль</label>
+      <label><input type="text" name="password" required><?= __('Пароль') ?></label>
     </div>
     <div>
-      <label><input type="file" name="photo" required>Фото</label>
+      <label><input type="file" name="photo" required><?= __('Фото') ?></label>
     </div>
 
 
 
-    <input type="submit" value="Зарегистрировать">
+    <input type="submit" value="<?= __('Зарегистрировать') ?>">
   </form>
 </div>
 

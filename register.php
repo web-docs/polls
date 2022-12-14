@@ -43,7 +43,7 @@ $info = @$_SESSION['info'];
       }
   </style>
 <div class="juniper">
-  <h1>Регистрация</h1>
+  <h1><?= __('Регистрация') ?></h1>
   <div class="juniper-img">
     <img src="assets/img/juniper-claus.png" alt="">
   </div>
