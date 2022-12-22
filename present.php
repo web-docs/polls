@@ -148,9 +148,8 @@ include("footer.php");
 
                 if(presents) {
                     max = presents.length - 1;
-                }
-                else{
-                    alert('no presents!')
+                }else{
+                    alert('no presents!');
                     max = 0;
                     $('.generate').css('display','none');
                 }

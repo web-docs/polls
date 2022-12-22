@@ -71,6 +71,7 @@ include('header.php') ?>
                             foreach($users as $user ){
                                 if($user['position_id']!=2) continue;
                                 $n++;
+                                if($n>10) break;
                                 ?>
                                 <li>
                                     <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
@@ -88,6 +89,7 @@ include('header.php') ?>
                             foreach($users as $user ){
                                 if($user['position_id']!=1) continue;
                                 $n++;
+                                if($n>10) break;
                                 ?>
                                 <li>
                                     <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
@@ -106,6 +108,7 @@ include('header.php') ?>
                             foreach($users as $user ){
                                 if($user['position_id']!=3) continue;
                                 $n++;
+                                if($n>10) break;
                                 ?>
                                 <li>
                                     <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
