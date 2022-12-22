@@ -11,6 +11,8 @@ if(!Auth::check()){
     }
 }
 
+$show_all = isset($_GET['all']) ? true : false;
+$limit=10;
 
 $users_count = User::getUsersCount();
 
@@ -71,7 +73,7 @@ include('header.php') ?>
                             foreach($users as $user ){
                                 if($user['position_id']!=2) continue;
                                 $n++;
-                                if($n>10) break;
+                                if($n>$limit && !$show_all) break;
                                 ?>
                                 <li>
                                     <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
@@ -89,7 +91,7 @@ include('header.php') ?>
                             foreach($users as $user ){
                                 if($user['position_id']!=1) continue;
                                 $n++;
-                                if($n>10) break;
+                                if($n>$limit && !$show_all) break;
                                 ?>
                                 <li>
                                     <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
@@ -108,7 +110,7 @@ include('header.php') ?>
                             foreach($users as $user ){
                                 if($user['position_id']!=3) continue;
                                 $n++;
-                                if($n>10) break;
+                                if($n>$limit && !$show_all) break;
                                 ?>
                                 <li>
                                     <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
@@ -123,3 +125,11 @@ include('header.php') ?>
     </div>
 <?php
 include('footer.php');
+
+?>
+
+<script>
+    timerid = setInterval(function(){
+        location.reload();
+    },18000);
+</script>

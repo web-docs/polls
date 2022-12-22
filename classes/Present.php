@@ -53,16 +53,30 @@ class Present{
             foreach ($results as $item) {
                 $_result[] = $item['id'];
             }
-            return $_result;
+            return json_encode($_result,JSON_UNESCAPED_UNICODE);
         }
 
-        return [0];
+        return json_encode([],JSON_UNESCAPED_UNICODE);
 
     }
 
     public static function on(){
 
         $results = DB::query("SELECT id,title,type FROM presents WHERE status=0");
+        if(count($results)) {
+            foreach ($results as $item) {
+                $_result[] = $item;
+            }
+            return json_encode($_result,JSON_UNESCAPED_UNICODE);
+        }
+
+        return json_encode([],JSON_UNESCAPED_UNICODE);
+
+    }
+
+    public static function all(){
+
+        $results = DB::query("SELECT id,title, type FROM presents group by type");
         if(count($results)) {
             foreach ($results as $item) {
                 $_result[] = $item;

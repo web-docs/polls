@@ -11,8 +11,8 @@ require('init.php');
 //    }
 //}
 
-$users   = User::getUsersByType(User::POSITION_CHIEF);
-$winners = Poll::stat(User::POSITION_CHIEF, 3);
+$users   = User::getUsersByType(User::POSITION_TECH);
+$winners = Poll::stat(User::POSITION_TECH, 3);
 
 $cnt = 0;
 $_users = [];
@@ -40,7 +40,7 @@ include('header.php') ?>
   <div class="juniper">
     <div class="winner-img">
       <img src="assets/img/winner.png" alt="">
-      <h2>Начальник года</h2>
+      <h2>Тех персонал года</h2>
 <!--      <h2>Тех персонал года</h2>-->
 <!--      <h2>Сотрудник года</h2>-->
     </div>
@@ -134,9 +134,10 @@ include('header.php') ?>
   </div>
 </div>
 
+<?php /*
 <div class="next-awards">
-  <a href="/results_2.php" class="lotto-start__btn" target="_blank">Сотрудник года</a>
-</div>
+  <a href="/results_2.php" class="lotto-start__btn">Тех персонал года</a>
+</div> */ ?>
 
 
 <?php
@@ -164,8 +165,7 @@ include('footer.php');
     var oldnum = 0;
 
     $(document).ready(function () {
-
-        $('#page_title').text('Начальник года')
+        $('#page_title').text('Тех персонал года')
 
         $('.generate').click(function () {
             $(this).parent().css('display', 'none');
