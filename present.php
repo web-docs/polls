@@ -3,7 +3,6 @@
 require 'init.php';
 
 if( isset($_POST['num']) && isset($_POST['ajax']) ){
-
     return ['status'=>Present::setStatus(1,$_POST['num'])];
 
 }
@@ -65,9 +64,9 @@ include("header.php");
         <div class="lotto-count__bg">
           <div class="bingo">!BINGO!</div>
           <div class="spinner">
-            <img id="results_1" src="assets/img/presents/1.png">
-            <img id="results_2" src="assets/img/presents/2.png">
-            <img id="results_3" src="assets/img/presents/3.png">
+            <img id="results_1" src="assets/img/presents/x.png">
+            <img id="results_2" src="assets/img/presents/x.png">
+            <img id="results_3" src="assets/img/presents/x.png">
           </div>
         </div>
         <div class="lotto-start">
@@ -90,12 +89,12 @@ include("footer.php");
 ?>
 <script>
 
-    var numbers = [<?= implode(',',Present::off()) ?>];
+    var numbers = <?= Present::off() ?>;
     var presents = <?= Present::on() ?>;
-   // var presents = [{'id':1}];
+    var presentsAll = <?=Present::all() ?>
 
     var min = 0;
-    var max = presents.length -1;
+    var max = presentsAll.length -1;
 
     var results = document.querySelector('#result_list');
 
@@ -105,56 +104,79 @@ include("footer.php");
     var results_2 = document.querySelector('#results_2');
     var results_3 = document.querySelector('#results_3');
 
+    var is_running = false;
+
     document.querySelector('.generate').onclick = function () {
         var time = 2000;
         var delay = 80;
         var timerId;
-
+        if(is_running) {
+            console.log('is_running');
+            return false;
+        }
+        is_running = true;
 
         if(presents.length==0) {
             results_1.src = path + 'x.png';
             results_2.src = path + 'x.png';
             results_3.src = path + 'x.png';
+            is_running = false;
+            console.log('THE END')
             return false;
         }
+
+        console.log(min + ' ' + max + ' ' + presents.length);
+
+
         timerId = setInterval(function random() {
             time -= delay;
-
-            results_1.src = path + presents[getRandom()].type + '.png';
-            results_2.src = path + presents[getRandom()].type + '.png';
-            results_3.src = path + presents[getRandom()].type + '.png';
-
+            results_1.src = path + presentsAll[getRandom()].type + '.png';
+            results_2.src = path + presentsAll[getRandom()].type + '.png';
+            results_3.src = path + presentsAll[getRandom()].type + '.png';
             console.log(time);
 
             if (time <= 0) {
                 clearInterval(timerId);
+                is_running = false;
                 num = getRandom();
+                k=0;
                 while (numbers.indexOf(num) >= 0) {
-
-                    if (numbers.length == max) {
+                    /*if (numbers.length == presents.length) {
                         num = 0;
                         break;
-                    }
+                    } */
                     num = getRandom();
+                    k++;
+                    if(k>5) {
+                        num=0;
+                        break;
+                    }
                 }
+
+                if(presents.length==1) num=0;
+
+                console.log(num + ' ' + presents.length);
                 results_1.src = path + presents[num].type + '.png';
                 results_2.src = path + presents[num].type + '.png';
                 results_3.src = path + presents[num].type + '.png';
 
-                if (num > 0) {
+                /* if (num > 0) {
                     numbers.push(num);
+                    presentOff(presents[num].id);
                     presents.splice( num, 1 );
-                }
+
+                } */
 
                 if(presents) {
+                    numbers.push(num);
+                    presentOff(presents[num].id);
+                    presents.splice( num, 1 );
                     max = presents.length - 1;
                 }else{
                     alert('no presents!');
                     max = 0;
                     $('.generate').css('display','none');
                 }
-
-                presentOff(num);
 
             }
         }, delay);
