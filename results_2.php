@@ -11,20 +11,22 @@ require('init.php');
 //    }
 //}
 
-$users   = User::getUsersByType(User::POSITION_CHIEF);
-$winners = Poll::stat(User::POSITION_CHIEF, 3);
+$users   = User::getUsersByType(User::POSITION_EMPLOYEE);
+$winners = Poll::stat(User::POSITION_EMPLOYEE, 3);
 
 $cnt = 0;
 $_users = [];
 foreach ($users as $id => $user) {
   if (!file_exists('assets/photo/'.$user['phone'].'.jpg')) {
     //$users[$id]['phone'] = 'user.png';
+    //unset($users[$id]);
   } else {
     $users[$id]['phone'] = $users[$id]['phone'].'.jpg';
     $_users[] = $users[$id];
   }
 }
-$users= $_users;
+$users = $_users;
+//d($users);
 
 include('header.php') ?>
 
@@ -40,7 +42,7 @@ include('header.php') ?>
   <div class="juniper">
     <div class="winner-img">
       <img src="assets/img/winner.png" alt="">
-      <h2>Начальник года</h2>
+      <h2>Сотрудник года</h2>
 <!--      <h2>Тех персонал года</h2>-->
 <!--      <h2>Сотрудник года</h2>-->
     </div>
@@ -135,7 +137,7 @@ include('header.php') ?>
 </div>
 
 <div class="next-awards">
-  <a href="/results_2.php" class="lotto-start__btn" target="_blank">Сотрудник года</a>
+  <a href="/results_3.php" class="lotto-start__btn" target="_blank">Тех персонал года</a>
 </div>
 
 
@@ -164,17 +166,23 @@ include('footer.php');
     var oldnum = 0;
 
     $(document).ready(function () {
-
-        $('#page_title').text('Начальник года')
+        $('#page_title').text('Сотрудник года')
 
         $('.generate').click(function () {
             $(this).parent().css('display', 'none');
+
+
             id = $(this).data('id');
             image = $('#results_' + id);
+
             interval = 0;
+
             timerId = setInterval(timer, delay);
+
+
         });
     });
+
 
     function timer() {
         time -= delay;

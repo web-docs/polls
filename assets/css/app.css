@@ -787,7 +787,7 @@ body {
   font-weight: 900;
   font-size: 250px;
   position: absolute;
-  top: 27%;
+  top: 35%;
   left: 22%;
   width: 56%;
   display: flex;
@@ -818,6 +818,15 @@ body {
   align-items: center;
   background-size: cover;
 }
+.lotto-bg__start {
+  width: 100%;
+  height: 100%;
+  background: url("/assets/img/lotto-bg.png") no-repeat center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
 .lotto-start__btn {
   width: 180px;
   height: 50px;
@@ -835,7 +844,27 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-.lotto-start__btn:hover {
+.lotto-start__btn__press {
+  width: 430px;
+  height: 110px;
+  background: linear-gradient(87.84deg, #72191C 50.08%, #E04252 97.48%);
+  border: 10px solid #F9AB23;
+  border-radius: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 59px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+.lotto-start__btn:hover,
+.lotto-start__btn__press:hover {
   color: #e7e7e7;
 }
 #results_1,
@@ -846,15 +875,20 @@ body {
   object-fit: contain;
   object-position: center;
 }
-.bingo {
+.bingo, .bingo.prise {
   font-style: normal;
   font-weight: 700;
-  font-size: 64px;
-  line-height: 78px;
+  font-size: 34px;
+  line-height: 38px;
   color: #fff;
-  margin-top: 15px;
+  margin-top: 40px;
   animation: pulse linear 2s infinite;
   
+}
+.present {
+  display: flex;
+  width: 200px;
+  height: 235px;
 }
 
 @keyframes pulse {
