@@ -2,10 +2,8 @@
 
 require 'init.php';
 
-if( isset($_POST['num']) && isset($_POST['ajax']) ){
-
-    return ['status'=>Present::setStatus(1,$_POST['num'])];
-
+if (isset($_POST['num']) && isset($_POST['ajax'])) {
+  return ['status' => Present::setStatus(1, $_POST['num'])];
 }
 
 ?>
@@ -15,18 +13,18 @@ include("header.php");
 ?>
 
 
-
 <div class="lotto">
   <div class="container">
     <div class="lotto-wrap">
 
-        <?php /* <div class="popup">
-        <div class="popup-wrap">
-          <h1 id="title">Укажите количество участников:</h1>
-          <input type="text" value="" id="count" maxlength="3">
-          <button id="set_count">Начать</button>
-        </div>
-      </div> */ ?>
+      <?php
+      /* <div class="popup">
+             <div class="popup-wrap">
+               <h1 id="title">Укажите количество участников:</h1>
+               <input type="text" value="" id="count" maxlength="3">
+               <button id="set_count">Начать</button>
+             </div>
+           </div> */ ?>
 
       <div class="lotto-title">
         <div class="lotto-dotted"></div>
@@ -63,16 +61,25 @@ include("header.php");
       </div>
       <div class="lotto-count">
         <div class="lotto-count__bg">
+          <!--  If         -->
           <div class="bingo">!BINGO!</div>
+          <!--         Else  -->
+<!--          <div class="bingo prise">!Ручка!</div>-->
           <div class="spinner">
-            <img id="results_1" src="assets/img/presents/1.png">
-            <img id="results_2" src="assets/img/presents/2.png">
-            <img id="results_3" src="assets/img/presents/3.png">
+            <div class="present">
+              <img id="results_1" src="assets/img/presents_1.png">
+            </div>
+            <div class="present">
+              <img id="results_2" src="assets/img/presents_2.png">
+            </div>
+            <div class="present">
+              <img id="results_3" src="assets/img/presents_8.png">
+            </div>
           </div>
         </div>
         <div class="lotto-start">
-          <div class="lotto-bg">
-            <a class="lotto-start__btn generate">
+          <div class="lotto-bg__start">
+            <a class="lotto-start__btn__press generate">
               <?= __('СТАРТ') ?>
             </a>
           </div>
@@ -90,12 +97,12 @@ include("footer.php");
 ?>
 <script>
 
-    var numbers = [<?= implode(',',Present::off()) ?>];
+    var numbers = [<?= implode(',', Present::off()) ?>];
     var presents = <?= Present::on() ?>;
-   // var presents = [{'id':1}];
+    // var presents = [{'id':1}];
 
     var min = 0;
-    var max = presents.length -1;
+    var max = presents.length - 1;
 
     var results = document.querySelector('#result_list');
 
@@ -111,7 +118,7 @@ include("footer.php");
         var timerId;
 
 
-        if(presents.length==0) {
+        if (presents.length == 0) {
             results_1.src = path + 'x.png';
             results_2.src = path + 'x.png';
             results_3.src = path + 'x.png';
@@ -143,16 +150,15 @@ include("footer.php");
 
                 if (num > 0) {
                     numbers.push(num);
-                    presents.splice( num, 1 );
+                    presents.splice(num, 1);
                 }
 
-                if(presents) {
+                if (presents) {
                     max = presents.length - 1;
-                }
-                else{
+                } else {
                     alert('no presents!')
                     max = 0;
-                    $('.generate').css('display','none');
+                    $('.generate').css('display', 'none');
                 }
 
                 presentOff(num);
@@ -190,21 +196,21 @@ include("footer.php");
         }
     }
 
-    function presentOff(num){
+    function presentOff(num) {
 
         $.ajax({
             type: 'post',
             url: '/present.php',
             data: {num: num, ajax: true},
-            beforeSend: function(xhr) {
+            beforeSend: function (xhr) {
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             },
-            success: function(response) {
-                if (response.status=false) {
+            success: function (response) {
+                if (response.status = false) {
                     alert('error')
                 }
             },
-            error: function(e) {
+            error: function (e) {
                 alert(e)
             }
         });
