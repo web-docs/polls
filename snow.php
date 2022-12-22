@@ -28,6 +28,7 @@
     overflow: hidden !important;
     background: #000000ba !important;
     z-index: 10;
+    position: fixed;
   }
   .background.active .snow-canvas {
     display: none;

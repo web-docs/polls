@@ -4,12 +4,15 @@ require('init.php');
 
 $error = '';
 
+
 if (!Auth::check()) {
     if (Auth::complete()) {
         Auth::redirect('complete.php');
     }
 } else {
-    Auth::redirect('poll.php');
+    if (!Auth::complete()) {
+        Auth::redirect('poll.php');
+    }
 }
 
 if (isset($_POST['login'])) {
@@ -37,7 +40,7 @@ include('header.php')
         <div class="login-img">
           <img src="assets/img/login.svg" class="login-desktop__img" alt="">
             <img src="assets/img/login-mobile.png" class="login-mobile__img" alt="">
-          <form action="" method="POST" class="login-form">
+          <form method="POST" class="login-form">
             <div class="flags">
               <a href="lang.php?lang=ru">
                 <img src="assets/img/ru.png" alt="Russian">

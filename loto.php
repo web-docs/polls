@@ -2,14 +2,10 @@
 
 $count = isset($_GET['c']) ? $_GET['c'] : 150;
 
-?>
-
-<?php
+include("init.php");
 include("header.php");
+
 ?>
-
-
-
 <div class="lotto">
   <div class="container">
     <div class="lotto-wrap">

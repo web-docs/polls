@@ -1,10 +1,15 @@
 <?php
 
 require('init.php');
-/*
+
 if(!Auth::check()){
     Auth::redirect('login.php');
-} */
+}else{
+    $user = Auth::user();
+    if($user['role']!=User::ROLE_ADMIN){
+        Auth::redirect('login.php');
+    }
+}
 
 $users = Poll::stat();
 $cnt = 0;
@@ -34,11 +39,6 @@ foreach ($users as $user) {
     $n++;
 }
 $limit = 10; // по 10 шт в каждой номинации
-
-?>
-
-
-<?php
 include('header.php') ?>
 
     <div class="stat-wrapper">

@@ -9,6 +9,9 @@ if (!Auth::check()) {
     }
     Auth::redirect('login.php');
 }
+if (Auth::complete()) {
+    Auth::redirect('complete.php');
+}
 
 if (isset($_POST['poll'])) {
     $users = explode(',', $_POST['user_to']);
@@ -21,7 +24,7 @@ if (isset($_POST['poll'])) {
 
 $user_from = Auth::id();
 
-$lang = $_SESSION['lang']=='en'? '_en':'';
+$lang = $_SESSION['lang'] == 'en' ? '_en' : '';
 
 ?>
 <?php
@@ -64,6 +67,13 @@ include('header.php') ?>
             if ($user_from == $user['id']) {
                 continue;
             } // пропустить свой id
+
+            if(file_exists('assets/photo/'.$user['phone'].'.jpg')){
+                $photo = 'assets/photo/'.$user['phone'].'.jpg';
+            }else{
+                $photo = 'assets/photo/user.png';
+            }
+
             if ($user['position_id'] != $old_position) {
             if ($old_position != '') {
                 echo '</div>';
@@ -75,7 +85,7 @@ include('header.php') ?>
                 } ?>
                 <div class="user" data-id="<?= $user['id'] ?>">
                     <div class="user-img">
-                        <img src="assets/photo/<?=$user['phone']?>.jpg" alt="">
+                        <img src="<?=$photo ?>" alt="">
                     </div>
                     <label>
                         <?= $user['fio_passport'] ?>

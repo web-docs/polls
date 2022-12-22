@@ -9,7 +9,7 @@ function autoLoader($name) {
 }
 
 spl_autoload_register('autoLoader');
-
+$locales = [];
 if($_SESSION['lang']=='en') {
     $locales = include('lang/en.php');
 }
