@@ -59,7 +59,6 @@ body {
   align-items: center;
 }
 
-
 .container {
   max-width: 1480px;
   width: 100%;
@@ -193,6 +192,18 @@ body {
   color: #fff;
   margin-top: 180px;
 }
+.juniper h2 {
+  position: absolute;
+  left: 36%;
+  top: 70%;
+  text-align: center;
+  width: 28%;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 49px;
+  color: #FFFFFF;
+}
 
 .juniper-img {
   width: 100%;
@@ -209,7 +220,7 @@ body {
   /*display: flex;*/
   /*justify-content: center;*/
   position: absolute;
-  top: 100px;
+  top: 50px;
 }
 
 .winner-img img {
@@ -345,7 +356,7 @@ body {
   position: absolute;
   left: 0;
   width: 100%;
-  top: 640px;
+  top: 590px;
   /*margin-bottom: 80px;*/
   overflow: hidden;
 }
@@ -801,35 +812,39 @@ body {
 .lotto-bg {
   width: 100%;
   height: 100%;
-  background: url("/assets/img/lotto-bg.png") no-repeat center;
+  background: url("/assets/img/results_1_default.png") no-repeat center;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: cover;
 }
 .lotto-start__btn {
-  width: 429px;
-  height: 110px;
-  background: linear-gradient(87.84deg, #72191c 50.08%, #e04252 97.48%);
-  border: 10px solid #f9ab23;
-  border-radius: 55px;
+  width: 180px;
+  height: 50px;
+  background: linear-gradient(85.24deg, #ffa402 61.33%, #ffd233 96.54%);
+  border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   font-style: normal;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
   color: #fff;
+  text-decoration: none;
   cursor: pointer;
 }
 .lotto-start__btn:hover {
-  color: #f9ab23;
+  color: #e7e7e7;
 }
 #results_1,
 #results_2,
 #results_3 {
-  width: 170px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 .bingo {
   font-style: normal;
@@ -908,4 +923,9 @@ body {
   height: 100%;
   object-position: center;
   border-radius: 50%;
+}
+.next-awards {
+  position: absolute;
+  bottom: 40px;
+  left: 46%;
 }
