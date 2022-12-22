@@ -64,7 +64,7 @@ include("header.php");
           <!--  If         -->
           <div class="bingo">!BINGO!</div>
           <!--         Else  -->
-<!--          <div class="bingo prise">!Ручка!</div>-->
+          <!--          <div class="bingo prise">!Ручка!</div>-->
           <div class="spinner">
             <div class="present">
               <img id="results_1" src="assets/img/presents_1.png">
@@ -155,8 +155,9 @@ include("footer.php");
 
                 if (presents) {
                     max = presents.length - 1;
+
                 } else {
-                    alert('no presents!')
+                    alert('no presents!');
                     max = 0;
                     $('.generate').css('display', 'none');
                 }
