@@ -11,12 +11,11 @@ if (isset($_POST['num']) && isset($_POST['ajax'])) {
 <?php
 include("header.php");
 ?>
-
-
 <div class="lotto">
   <div class="container">
     <div class="lotto-wrap">
-
+      <embed src="/assets/jingle.mp3" loop="true" autostart="true" width="2"
+             height="0">
       <?php
       /* <div class="popup">
              <div class="popup-wrap">
@@ -158,7 +157,7 @@ include("footer.php");
 
                 } else {
                     alert('no presents!');
-                    max = 0;
+                     max = 0;
                     $('.generate').css('display', 'none');
                 }
 
