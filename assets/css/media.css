@@ -1,3 +1,19 @@
+
+@media screen and (max-width: 1480px){
+  .poll-wrapper, .stat-wrapper {
+    min-height: 70vh;
+  }
+  .winner-img {
+    top: 20px;
+  }
+  .winner {
+    top: 560px;
+  }
+  .next-awards {
+    bottom: 20px;
+    left: 44%;
+  }
+}
 @media screen and (max-width: 768px) {
   .container {
     width: 100%;
