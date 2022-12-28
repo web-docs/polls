@@ -57,10 +57,12 @@ class User{
         $users = DB::query("SELECT * FROM users WHERE role=:role AND position_id =:type ORDER BY position_id,fio_passport",['role'=>1,'type'=>$type]);
         return $users;
     }
+	
 	public static function get($id){
 	    $user = DB::query("SELECT * FROM users WHERE id={$id} LIMIT 1");
 	    return $user[0];
     }
+	
 	public static function getByLogin($login){
 	    $user = DB::query("SELECT * FROM users WHERE phone='{$login}' LIMIT 1");
 	    return $user[0];
