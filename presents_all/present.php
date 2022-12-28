@@ -3,7 +3,7 @@
 require 'init.php';
 
 if( isset($_POST['num']) && isset($_POST['ajax']) ) {
-    return ['status' => Present::out($_POST['num'],$_POST['quantity'])];
+    return ['status' => Present::setStatus(1, $_POST['num'])];
 }
 
 include("header.php");
@@ -106,7 +106,6 @@ include("footer.php");
     var results_3 = document.querySelector('#results_3');
 
     var is_running = false;
-    var oldn = 0;
 
     if (presents.length == 0) {
         $('.lotto-start__btn__press').text('THE END');
@@ -178,13 +177,8 @@ include("footer.php");
 
                 if(presents) {
                     numbers.push(num);
-
-                    presents[num].quantity-=1;
-                    presentOff(presents[num].id,presents[num].quantity);
-
-                    if(presents[num].quantity==0) {
-                        presents.splice(num, 1);
-                    }
+                    presentOff(presents[num].id);
+                    presents.splice( num, 1 );
 
                     if(presents.length==0){
                         $('.generate').removeClass('generate');
@@ -203,14 +197,7 @@ include("footer.php");
     }
 
     function getRandom() {
-        n = Math.round(Math.random() * (max - min) + min);
-        /* k=0;
-        while(n ==oldn){
-            n=Math.round(Math.random() * (max - min) + min);
-            k++;
-            if(k>3) break;
-        } */
-        return n;
+        return Math.round(Math.random() * (max - min) + min);
     }
 
     function correctNumber(num) {
@@ -222,26 +209,6 @@ include("footer.php");
         return ("" + num).split("");
     }
 
-    function presentOff(num,quantity) {
-
-        $.ajax({
-            type: 'post',
-            url: '/present.php',
-            data: {num: num,quantity: quantity, ajax: true},
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            },
-            success: function (response) {
-                if (response.status = false) {
-                    alert('error')
-                }
-            },
-            error: function (e) {
-                alert(e)
-            }
-        });
-
-    }
     function setTextAnimation(delay, duration, strokeWidth, timingFunction, strokeColor, repeat) {
         let paths = document.querySelectorAll("path");
         let mode = repeat ? 'infinite' : 'forwards'
@@ -257,6 +224,26 @@ include("footer.php");
         }
     }
 
+    function presentOff(num) {
+
+        $.ajax({
+            type: 'post',
+            url: '/present.php',
+            data: {num: num, ajax: true},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            },
+            success: function (response) {
+                if (response.status = false) {
+                    alert('error')
+                }
+            },
+            error: function (e) {
+                alert(e)
+            }
+        });
+
+    }
 
     setTextAnimation(0.2, 4.8, 1, 'linear', '#fff', true);
 

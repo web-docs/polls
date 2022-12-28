@@ -1,0 +1,44 @@
+-- --------------------------------------------------------
+-- Хост:                         127.0.0.1
+-- Версия сервера:               10.5.11-MariaDB-log - mariadb.org binary distribution
+-- Операционная система:         Win64
+-- HeidiSQL Версия:              11.3.0.6376
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+-- Дамп структуры для таблица polls.presents
+CREATE TABLE IF NOT EXISTS `presents` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) DEFAULT NULL,
+  `type` varchar(16) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `type` (`type`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- Дамп данных таблицы polls.presents: ~9 rows (приблизительно)
+INSERT INTO `presents` (`id`, `title`, `type`, `status`, `created_at`) VALUES
+	(1, 'Кофеварка', '1', 0, NULL),
+	(2, 'Блокнот', '2', 0, NULL),
+	(3, 'Бокал', '3', 0, NULL),
+	(4, 'Блендер', '4', 0, NULL),
+	(5, 'Освежитель', '5', 0, NULL),
+	(6, 'Рюкзак', '6', 0, NULL),
+	(7, 'Вентилятор', '7', 0, NULL),
+	(8, 'Чашки', '8', 0, NULL),
+	(9, 'Мыло', '9', 0, NULL);
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

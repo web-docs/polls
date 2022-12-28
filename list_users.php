@@ -12,11 +12,25 @@ if(!Auth::check()){
 }
 
 $show_all = isset($_GET['all']) ? true : false;
-$limit=10;
+$limit=1000;
 
 $users_count = User::getUsersCount();
 
 $users = Poll::stat();
+$list_users = Poll::votes();
+
+foreach ($list_users as $k=> $u){
+    if(!file_exists('assets/photo/'.$u['phone'] .'.jpg')){
+        $list_users[$k]['phone'] = 'user.png';
+    }else{
+        $list_users[$k]['phone'] = $list_users[$k]['phone'] . '.jpg';
+    }
+}
+
+//d($list_users);
+
+//d($users);
+
 $cnt =[];
 /*
 foreach($users as $user) {
@@ -40,6 +54,18 @@ include('header.php') ?>
         .lists{
             margin-top:200px !important;
         }
+        .user-photo{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        .user-photo.vote{
+            width: 30px;
+            height: 30px;
+        }
+
+
     </style>
 
     <div class="lists">
@@ -56,9 +82,7 @@ include('header.php') ?>
                             </div>
                             <div class="lists-title">
                                 <span><a href="/list.php"><?= __('Рейтинг') ?> <small><?= __('голосования') ?></small> </a></span>
-                                <?php if($show_all){ ?>
-                                <div class="text-center text-white"><b>Голосов:</b> <?=ceil($cnts/3) .' / '. $users_count ?></div>
-                                <?php } ?>
+                                <div class="text-center text-white"><b>Голосов:</b> <?=ceil($cnts/3) /*?> / <?=$users_count */?></div>
                             </div>
                         </div>
                         <div class="claus-right">
@@ -78,8 +102,22 @@ include('header.php') ?>
                                 if($n>$limit && !$show_all) break;
                                 ?>
                                 <li>
-                                    <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                                    <b class="light-green"><?=number_format($user['cnt']*$percent[2],2,'.','') ?>%</b>
+                                    <div>
+                                        <p><img src="assets/photo/<?=$user['phone']?>.jpg" class="user-photo" title="<?=$user['id']?>"><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
+                                        <b class="light-green"><?=number_format($user['cnt']*$percent[2],2,'.','') ?>%</b>
+                                    </div>
+                                    <div>
+                                        <?php
+                                        $c=0;
+                                        foreach($list_users as $u){
+                                            if($u['user_to']!=$user['id']) continue;
+                                            $c++;
+                                            ?>
+                                            <img src="assets/photo/<?=$u['phone']?>" title="<?=$u['ufrom'] . ' - ' . $u['uposition'] . ' - ' . $u['user_from']?>" class="user-photo vote">
+                                            <?=$u['user_from']?>
+                                        <?php } ?>
+                                        <div>Всего: <?=$c?></div>
+                                    </div>
                                 </li>
                             <?php } ?>
                         </ol>
@@ -96,8 +134,22 @@ include('header.php') ?>
                                 if($n>$limit && !$show_all) break;
                                 ?>
                                 <li>
-                                    <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
+                                    <div>
+                                        <p><img src="assets/photo/<?=$user['phone']?>.jpg" class="user-photo" title="<?=$user['id']?>"><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
                                     <b class="light-green"><?=number_format($user['cnt']*$percent[1],2,'.','') ?>%</b>
+                                    </div>
+                                    <div>
+                                        <?php
+                                        $c=0;
+                                        foreach($list_users as $u){
+                                            if($u['user_to']!=$user['id']) continue;
+                                            $c++;
+                                            ?>
+                                            <img src="assets/photo/<?=$u['phone']?>" title="<?=$u['ufrom'] . ' - ' . $u['uposition']. ' - ' . $u['user_from']?>" class="user-photo vote">
+                                            <?=$u['user_from']?>
+                                        <?php } ?>
+                                        <div>Всего: <?=$c?></div>
+                                    </div>
                                 </li>
                             <?php } ?>
 
@@ -115,8 +167,22 @@ include('header.php') ?>
                                 if($n>$limit && !$show_all) break;
                                 ?>
                                 <li>
-                                    <p><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
-                                    <b class="light-green"><?=number_format($user['cnt']*$percent[3],2,'.','') ?>%</b>
+                                    <div>
+                                        <p><img src="assets/photo/<?=$user['phone']?>.jpg" class="user-photo" title="<?=$user['id']?>"><small><?= $n ?></small><?=$user['fio_passport'] ?></p>
+                                        <b class="light-green"><?=number_format($user['cnt']*$percent[3],2,'.','') ?>%</b>
+                                    </div>
+                                    <div>
+                                        <?php
+                                        $c=0;
+                                        foreach($list_users as $u){
+                                            if($u['user_to']!=$user['id']) continue;
+                                            $c++;
+                                            ?>
+                                            <img src="assets/photo/<?=$u['phone']?>" title="<?=$u['ufrom'] . ' - ' . $u['uposition']. ' - ' . $u['user_from']?>" class="user-photo vote">
+                                            <?=$u['user_from']?>
+                                        <?php } ?>
+                                        <div>Всего: <?=$c?></div>
+                                    </div>
                                 </li>
                             <?php } ?>
                         </ol>

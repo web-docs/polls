@@ -18,13 +18,18 @@ class Present{
         }
 
         for($i=1;$i<=$data['quantity']; $i++) {
-            DB::query("INSERT INTO presents SET title=:title, type=:type, created_at=NOW()", ['title' => $data['title'], 'type' => $data['type']]);
+            DB::query("INSERT INTO presents SET title=:title, type=:type, quantity=:quantity created_at=NOW()", ['title' => $data['title'], 'type' => $data['type'], 'quantity' => $data['quantity']]);
         }
 		return true;
 	}
 
     public static function setStatus($status,$id){
         DB::query("UPDATE presents SET status=:status WHERE id=:id", ['status' => $status,'id'=>$id]);
+        return true;
+    }
+    // подарок выдан
+    public static function out($id,$quantity){
+        DB::query("UPDATE presents SET quantity=:quantity WHERE id=:id", ['quantity' => $quantity,'id'=>$id]);
         return true;
     }
 
@@ -62,7 +67,7 @@ class Present{
 
     public static function on(){
 
-        $results = DB::query("SELECT id,title,type FROM presents WHERE status=0");
+        $results = DB::query("SELECT id,title,type,quantity,info FROM presents WHERE status=0 and quantity>0");
         if(count($results)) {
             foreach ($results as $item) {
                 $_result[] = $item;
@@ -76,7 +81,7 @@ class Present{
 
     public static function all(){
 
-        $results = DB::query("SELECT id,title, type FROM presents group by type");
+        $results = DB::query("SELECT id,title,type,quantity,info FROM presents group by type");
         if(count($results)) {
             foreach ($results as $item) {
                 $_result[] = $item;

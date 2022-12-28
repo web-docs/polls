@@ -2,285 +2,234 @@
 
 require('init.php');
 
-if(!Auth::check()){
-    Auth::redirect('login.php');
-}else{
-    $user = Auth::user();
-    if($user['role']!=User::ROLE_ADMIN){
-        Auth::redirect('login.php');
-    }
-}
+//if(!Auth::check()){
+//    Auth::redirect('login.php');
+//}else{
+//    $user = Auth::user();
+//    if($user['role']!=User::ROLE_ADMIN){
+//        Auth::redirect('login.php');
+//    }
+//}
 
-$users = Poll::stat();
+$users   = User::getUsersByType(User::POSITION_CHIEF);
+$winners = Poll::stat(User::POSITION_CHIEF, 3);
+
 $cnt = 0;
-foreach ($users as $user) {
-    $cnt += $user['cnt'];
+$_users = [];
+foreach ($users as $id => $user) {
+  if (!file_exists('assets/photo/'.$user['phone'].'.jpg')) {
+    //$users[$id]['phone'] = 'user.png';
+  } else {
+    $users[$id]['phone'] = $users[$id]['phone'].'.jpg';
+    $_users[] = $users[$id];
+  }
 }
-$percent = 100 / $cnt;
+$users= $_users;
 
-$limit = 1; // 1 победитель в номинации
-$n = 1;
-$u = [1 => 0, 2 => 0, 3 => 0];
-$winner = [];
-$old_position = '';
-foreach ($users as $user) {
-    if ($user['position_id'] != $old_position) {
-        $old_position = $user['position_id'];
-        $n = 1;
-    }
-    $u[$user['position_id']]++;
-    if (!isset($winner[$user['position_id']])) {
-        $winner[$user['position_id']] = $user;
-    }
-    if ($u[$user['position_id']] > $limit) {
-        continue;
-    }
-
-    $n++;
-}
-$limit = 10; // по 10 шт в каждой номинации
 include('header.php') ?>
 
-    <div class="stat-wrapper">
+<style>
+  .lotto-bg {
+    position: relative;
+  }
+</style>
 
-        <div class="juniper">
-            <div class="winner-img">
-                <img src="assets/img/winner.png" alt="">
-            </div>
-        </div>
 
+<div class="stat-wrapper">
+
+  <div class="juniper">
+    <div class="winner-img">
+      <img src="assets/img/winner.png" alt="">
+      <h2>Начальник года</h2>
+<!--      <h2>Тех персонал года</h2>-->
+<!--      <h2>Сотрудник года</h2>-->
     </div>
+  </div>
 
-    <div class="winner">
-        <div class="container">
-            <div class="winner-wrapper">
-                <div class="winner-user">
-                    <div class="winner-user__img">
-                        <img src="assets/photo/<?= isset($winner[2]) ? $winner[2]['phone'] : '' ?>.jpg" alt="">
-                    </div>
-                    <h3 data-id="<?= $winner[2]['id'] ?>"><?= isset($winner[2]) ? $winner[2]['fio_passport'] : 'Не определен' ?></h3>
-                    <span><?= __('Сотрудник года') ?></span>
-                </div>
-                <div class="winner-user">
-                    <div class="winner-user__img">
-                        <img src="assets/photo/<?= isset($winner[1]) ? $winner[1]['phone'] : '' ?>.jpg" alt="">
-                    </div>
-                    <h3 data-id="<?= $winner[1]['id'] ?>"><?= isset($winner[1]) ? $winner[1]['fio_passport'] : 'Не определен' ?></h3>
-                    <span><?= __('Начальник года') ?></span>
-                </div>
-                <div class="winner-user">
-                    <div class="winner-user__img">
-                        <img src="assets/photo/<?= isset($winner[3]) ? $winner[3]['phone'] : '' ?>.jpg" alt="">
-                    </div>
-                    <h3 data-id="<?= $winner[3]['id'] ?>"><?= isset($winner[3]) ? $winner[3]['fio_passport'] : 'Не определен' ?></h3>
-                    <span><?= __('Тех персона года') ?></span>
-                </div>
-            </div>
+</div>
+
+<div class="winner">
+  <div class="container">
+    <div class="winner-wrapper">
+      <div class="winner-user">
+        <div class="winner-user__img">
+          <div class="lotto-bg">
+            <a class="lotto-start__btn generate" data-id="1">
+              <?= __('СТАРТ') ?>
+            </a>
+          </div>
+          <img src="assets/photo/user.png?" alt="" id="results_1">
         </div>
-    </div>
-    <div class="winner-mobile">
-        <div class="container">
-            <div class="winner-wrapper">
-                <div class="winner-user">
-                    <div class="winner-user__img">
-                        <img src="assets/photo/<?= isset($winner[1]) ? $winner[1]['phone'] : '' ?>.jpg" alt="">
-                    </div>
-                    <h3 data-id="<?= $winner[1]['id'] ?>"><?= isset($winner[1]) ? $winner[1]['fio_passport'] : 'Не определен' ?></h3>
-                    <span><?= __('Начальник года') ?></span>
-                </div>
-
-                <div class="winner-user">
-                    <div class="winner-user__img">
-                        <img src="assets/photo/<?= isset($winner[2]) ? $winner[2]['phone'] : '' ?>.jpg" alt="">
-                    </div>
-                    <h3 data-id="<?= $winner[2]['id'] ?>"><?= isset($winner[2]) ? $winner[2]['fio_passport'] : 'Не определен' ?></h3>
-                    <span><?= __('Сотрудник года') ?></span>
-                </div>
-                <div class="winner-user">
-                    <div class="winner-user__img">
-                        <img src="assets/photo/<?= isset($winner[3]) ? $winner[3]['phone'] : '' ?>.jpg" alt="">
-                    </div>
-                    <h3 data-id="<?= $winner[3]['id'] ?>"><?= isset($winner[3]) ? $winner[3]['fio_passport'] : 'Не определен' ?></h3>
-                    <span><?= __('Тех персона года') ?></span>
-                </div>
-            </div>
+        <h3 data-id="<?= $winners[1]['id'] ?>" id="winner_1"></h3>
+        <span><?= __('2-е место') ?></span>
+      </div>
+      <div class="winner-user">
+        <div class="winner-user__img">
+          <div class="lotto-bg">
+            <a class="lotto-start__btn generate" data-id="0">
+              <?= __('СТАРТ') ?>
+            </a>
+          </div>
+          <img src="assets/photo/user.png" alt="" id="results_0">
         </div>
-    </div>
-
-    <div class="lists">
-        <div class="container">
-            <div class="lists-wrapper">
-                <div class="lists-bg">
-                    <div class="lists-rel">
-                        <div class="claus-left">
-                            <img src="assets/img/raiting-claus-left.png" alt="#">
-                        </div>
-                        <div class="lists-abs">
-                            <div class="bantik">
-                                <img src="assets/img/raiting-lents.png" alt="">
-                            </div>
-                            <div class="lists-title">
-                                <span><a href="/list.php">><?= __('Рейтинг') ?> <small><?= __('голосования') ?></small> </a></span>
-                            </div>
-                        </div>
-                        <div class="claus-right">
-                            <img src="assets/img/raiting-claus.png" alt="#">
-                        </div>
-                    </div>
-                </div>
-                <div class="lists-all">
-                    <div class="list-item">
-                        <ol>
-                            <strong><?= __('Сотрудник года') ?></strong>
-                            <?php
-                            $n = 0;
-                            foreach ($users as $user) {
-                                if ($user['position_id'] != 2) {
-                                    continue;
-                                }
-                                $n++;
-                                if ($n > $limit) {
-                                    continue;
-                                }
-                                ?>
-                                <li>
-                                    <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                                    <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?>
-                                        %</b>
-                                </li>
-                                <?php
-                            } ?>
-                        </ol>
-                    </div>
-                    <div class="list-item">
-                        <ol>
-                            <strong><?= __('Начальник года') ?></strong>
-
-                            <?php
-                            $n = 0;
-                            foreach ($users as $user) {
-                                if ($user['position_id'] != 1) {
-                                    continue;
-                                }
-                                $n++;
-                                if ($n > $limit) {
-                                    continue;
-                                }
-                                ?>
-                                <li>
-                                    <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                                    <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?>
-                                        %</b>
-
-                                </li>
-                                <?php
-                            } ?>
-
-                        </ol>
-                    </div>
-                    <div class="list-item">
-                        <ol>
-                            <strong><?= __('Тех персонал года') ?></strong>
-                            <?php
-                            $n = 0;
-                            foreach ($users as $user) {
-                                if ($user['position_id'] != 3) {
-                                    continue;
-                                }
-                                $n++;
-                                if ($n > $limit) {
-                                    continue;
-                                }
-                                ?>
-                                <li>
-                                    <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                                    <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?>
-                                        %</b>
-                                </li>
-                                <?php
-                            } ?>
-                        </ol>
-                    </div>
-                </div>
-                <div class="lists-all__mobile">
-                    <div class="list-item">
-                        <ol>
-                            <strong><?= __('Начальник года') ?></strong>
-
-                            <?php
-                            $n = 0;
-                            foreach ($users as $user) {
-                                if ($user['position_id'] != 1) {
-                                    continue;
-                                }
-                                $n++;
-                                if ($n > $limit) {
-                                    continue;
-                                }
-                                ?>
-                                <li>
-                                    <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                                    <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?>
-                                        %</b>
-
-                                </li>
-                                <?php
-                            } ?>
-
-                        </ol>
-                    </div>
-                    <div class="list-item">
-                        <ol>
-                            <strong><?= __('Сотрудник года') ?></strong>
-                            <?php
-                            $n = 0;
-                            foreach ($users as $user) {
-                                if ($user['position_id'] != 2) {
-                                    continue;
-                                }
-                                $n++;
-                                if ($n > $limit) {
-                                    continue;
-                                }
-                                ?>
-                                <li>
-                                    <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                                    <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?>
-                                        %</b>
-                                </li>
-                                <?php
-                            } ?>
-                        </ol>
-                    </div>
-                    <div class="list-item">
-                        <ol>
-                            <strong><?= __('Тех персонал года') ?></strong>
-                            <?php
-                            $n = 0;
-                            foreach ($users as $user) {
-                                if ($user['position_id'] != 3) {
-                                    continue;
-                                }
-                                $n++;
-                                if ($n > $limit) {
-                                    continue;
-                                }
-                                ?>
-                                <li>
-                                    <p><small><?= $n ?></small><?= $user['fio_passport'] ?></p>
-                                    <b class="light-green"><?= number_format($user['cnt'] * $percent, 2, '.', '') ?>
-                                        %</b>
-                                </li>
-                                <?php
-                            } ?>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+        <h3 data-id="<?= $winners[0]['id'] ?>" id="winner_0"></h3>
+        <span><?= __('1-е место') ?></span>
+      </div>
+      <div class="winner-user">
+        <div class="winner-user__img">
+          <div class="lotto-bg">
+            <a class="lotto-start__btn generate" data-id="2">
+              <?= __('СТАРТ') ?>
+            </a>
+          </div>
+          <img src="assets/photo/user.png" alt="" id="results_2">
         </div>
+        <h3 data-id="<?= $winners[2]['id'] ?>" id="winner_2"></h3>
+        <span><?= __('3-е место') ?></span>
+      </div>
     </div>
+  </div>
+</div>
+<div class="winner-mobile">
+  <div class="container">
+    <div class="winner-wrapper">
+      <div class="winner-user">
+        <div class="winner-user__img">
+          <div class="lotto-bg">
+            <a class="lotto-start__btn generate" data-id="1">
+              <?= __('СТАРТ') ?>
+            </a>
+          </div>
+          <img src="assets/photo/user.png" alt="" id="results_1">
+        </div>
+        <h3 data-id="<?= $winners[1]['id'] ?>" id="winner_1"></h3>
+        <span><?= __('2-е место') ?></span>
+      </div>
+
+      <div class="winner-user">
+        <div class="winner-user__img">
+          <div class="lotto-bg">
+            <a class="lotto-start__btn generate" data-id="0">
+              <?= __('СТАРТ') ?>
+            </a>
+          </div>
+          <img src="assets/photo/user.png" alt="" id="results_0">
+        </div>
+        <h3 data-id="<?= $winners[0]['id'] ?>" id="winner_0"></h3>
+        <span><?= __('1-е место') ?></span>
+      </div>
+      <div class="winner-user">
+        <div class="winner-user__img">
+          <div class="lotto-bg">
+            <a class="lotto-start__btn generate" data-id="2">
+              <?= __('СТАРТ') ?>
+            </a>
+          </div>
+          <img src="assets/photo/user.png" alt="" id="results_2">
+        </div>
+        <h3 data-id="<?= $winners[2]['id'] ?>" id="winner_2"></h3>
+        <span><?= __('3-е место') ?></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="next-awards">
+  <a href="/results_2.php" class="lotto-start__btn" target="_blank">Сотрудник года</a>
+</div>
 
 
 <?php
-include('footer.php')
+include('footer.php');
+
 ?>
+
+<script>
+
+    var users = <?= json_encode($users, JSON_UNESCAPED_UNICODE) ?>;
+    var winners = <?= json_encode($winners, JSON_UNESCAPED_UNICODE) ?>;
+
+    var min = 0;
+    var max = users.length - 1;
+
+    var path = 'assets/photo/';
+
+    var time = 4000;
+    var delay = 100;
+    var timerId;
+    var image;
+    var id;
+    var interval;
+    var num = 0;
+    var oldnum = 0;
+
+    $(document).ready(function () {
+
+        $('#page_title').text('Начальник года')
+
+        $('.generate').click(function () {
+            $(this).parent().css('display', 'none');
+            id = $(this).data('id');
+            image = $('#results_' + id);
+            interval = 0;
+            timerId = setInterval(timer, delay);
+        });
+    });
+
+    function timer() {
+        time -= delay;
+        num = getRandom();
+        console.log('random ' + num)
+
+        $(image).attr('src', path + users[num].phone);
+        console.log('INNER ' + time + ' ' + delay + ' interval: ' + interval)
+
+        if (time <= 0) {
+            interval++;
+            if (interval == 1) {
+                clearInterval(timerId);
+                time = 4000;
+                delay = 200;
+                timerId = setInterval(timer, delay);
+            } else if (interval == 2) {
+                clearInterval(timerId);
+                time = 4000;
+                delay = 300;
+                timerId = setInterval(timer, delay);
+            } else if (interval == 3) {
+                clearInterval(timerId);
+                time = 4000;
+                delay = 400;
+                timerId = setInterval(timer, delay);
+            } else if (interval == 4) {
+                clearInterval(timerId);
+                time = 4000;
+                delay = 500;
+                timerId = setInterval(timer, delay);
+            } else if (interval == 5) {
+                clearInterval(timerId);
+                time = 4000;
+                delay = 600;
+                timerId = setInterval(timer, delay);
+            } else if (interval == 6) {
+                clearInterval(timerId);
+                time = 4000;
+                delay = 100;
+                $(image).attr('src', path + winners[id].phone + '.jpg');
+                $('#winner_' + id).text(winners[id].fio_passport);
+            }
+            console.log("ENTER " + time + ' ' + delay + ' interval: ' + interval)
+        }
+    }
+
+    function getRandom() {
+        res = Math.round(Math.random() * (max - min) + min);
+        if(oldnum!=res){
+            oldnum=res;
+            num = res;
+        }else{
+            num = getRandom();
+        }
+        return num;
+    }
+</script>
