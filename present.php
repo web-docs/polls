@@ -153,7 +153,7 @@ include("footer.php");
                 max = presents.length - 1;
                 num = getRandom();
                 k=0;
-                while (numbers.indexOf(num) >= 0 && num !=oldn) {
+                while (numbers.indexOf(num) >= 0 || num==oldn) {
                     /*if (numbers.length == presents.length) {
                         num = 0;
                         break;
